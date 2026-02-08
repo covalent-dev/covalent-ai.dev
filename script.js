@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("%c System Active: TerminaI Interface Loaded ", "background: #000; color: #0f0; padding: 5px; border: 1px solid #0f0;");
+    console.log("%c System Active: Terminal Interface Loaded ", "background: #000; color: #0f0; padding: 5px; border: 1px solid #0f0;");
 
     // Optional: Add subtle mouse movement parallax to the glow background
     const glowBg = document.querySelector('.glow-bg');
