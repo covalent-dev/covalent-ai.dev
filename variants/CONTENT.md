@@ -1,79 +1,106 @@
 # CONTENT SPEC — canonical copy for all three variants
 
-Owner: Taxman. Written by the executor from `portfolio-redesign-spec.md` §3 and the CIRA
-case study. **This file is the source of truth for wording.** Variants differ in design only.
-If a variant needs a line this file does not have, add it here first.
+Owner: Taxman. Written by the executor from `portfolio-redesign-spec.md` §3, corrected by
+`portfolio-redesign-addendum.md` and the posture refs
+(`portfolio-posture-and-resume.md`, `active-resume.md`). **This file is the source of truth for
+wording.** Variants differ in design only. If a variant needs a line this file does not have, add
+it here first.
 
 Hard rules that apply to every string below:
 
 - First person singular. Never "we", never "the studio", never "the team".
-- No OpenAI, no employer, no job title from employment, no location, no years of experience,
-  no project counts, no metrics, no client names, no logos, no testimonials.
+- **Software first, AI as a tool.** The site is not an AI agency or an "AI consultancy".
+- **No prices anywhere.** No dollar amounts, no price cards, no `/pricing/` page. The only money
+  call to action is the price-sheet email:
+  `mailto:samuel.takata@covalent-ai.dev?subject=Price%20sheet`
+  (label: `Email me for a price sheet`).
+- **`OpenAI` appears in exactly one place: the Experience section of the home page.** Not in the
+  hero, `<title>`, meta description, Open Graph tags, headings outside Experience, or any call to
+  action. No OpenAI clients, internal tools, confidential delivery, or "ex-OpenAI" phrasing.
+- No location and no city. Remote only. No years of experience, project counts, metrics, client
+  names, logos, or testimonials.
+- **Provenance is stated in exactly one place: the disclosure on `/work/cira/`.** No home page may
+  claim, hint at, or reconstruct past client work; "I've built this for a service business
+  before…" and anything like it is deleted and must not come back in another form.
 - Banned words: revolutionize, cutting-edge, seamless, leverage, unlock, supercharge,
   game-changing, world-class, next-generation, harness, empower, synergy, "AI-powered" as an
   adjective on everything.
 - The disclosure paragraph below appears **once per variant, on `/work/cira/` only**. Never
   repeat or paraphrase it anywhere else. The home-page work card must not state or imply who
   CIRA was built for.
-- Every price is USD and provisional. Keep the numbers in one commented block per variant.
 
 Identity:
 
 | Field | Value |
 | --- | --- |
 | Name | Samuel Takata |
-| Wordmark | `covalent` (lowercase, one word) |
+| Brand wrapper | `Covalent AI` |
+| Wordmark | `covalent` (lowercase, one word; the hero wordmark may read `covalent`) |
 | Domain | covalent-ai.dev |
-| Email | gifttakata101@gmail.com |
+| Email | samuel.takata@covalent-ai.dev |
+| Location | Remote. Do not print a city. |
 | GitHub | https://github.com/covalent-dev |
 | LinkedIn | https://linkedin.com/in/samuel-takata |
+| Project repository | https://github.com/covalent-dev/cira (real, not a placeholder) |
 | Footer | wordmark, email, GitHub, LinkedIn, © 2026 Samuel Takata |
 | CTA | email only (`mailto:`). No forms, no booking links, no newsletter. |
 
 Page titles / meta descriptions (one per page, same across variants):
 
-- `/index.html` — title `covalent — AI systems for intake and triage`; description
-  `I build systems that take routine requests off your desk: validated, classified, routed and recorded, stopping for a person when the call is not routine.`
+- `/index.html` — title `Covalent AI — software developer for hire`; description
+  `Software developer for hire. Freelance and contract work: automation, integration, and the tools a team works in, with AI as a tool when it is the right one.`
 - `/work/cira/index.html` — title `CIRA: client intake with review and an audit trail — covalent`;
   description `A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.`
-- `/pricing/index.html` — title `Pricing — covalent`; description
-  `Diagnostic, pilot, implementation and support pricing in USD, with what each engagement includes and what it does not.`
 - `/404.html` — title `Page not found — covalent`.
+- There is no `/pricing/` page. The directory is deleted, not hidden.
 
 ---
 
 ## NAVIGATION (every page)
 
-Home · Work · Pricing · Email me
+Home · Work · Email me
 
 `Work` links to `/work/cira/`. Wordmark links to `/`. `Email me` is
-`mailto:gifttakata101@gmail.com`.
+`mailto:samuel.takata@covalent-ai.dev`. No Pricing link anywhere: not in the header, the overlay
+menu, the footer, or the 404 page.
 
 ---
 
 ## HOME
 
-### Eyebrow
+### Hero
 
-`Intake, triage, and answers from your own documents`
+Headline (H1, all variants):
 
-### Hero statement
+> Software developer for hire.
 
-> Every day, someone on your team reads the same kind of request and makes the same kind of
-> decision. I build systems that do that part, and stop for a person when the call is not routine.
+Supporting line:
 
-### Hero note (short, secondary tier)
+> Available for freelance and contract work — software that solves a business problem.
 
-One line under the statement:
+Face and posture line:
 
-> I'm Samuel Takata. I build intake and triage systems: requests validated, classified, routed,
-> and recorded, with a review step wherever the system is unsure.
+> I'm Samuel Takata. I build automation, integration, and the tools a team works in, and I use AI
+> when it is the right tool for the job.
+
+Brand wrapper, where the design has a slot for it: `Covalent AI`.
+
+Per-variant slot assignment (same words, different slots):
+
+| Variant | Eyebrow / label | H1 | Supporting + posture |
+| --- | --- | --- | --- |
+| A | `Available for freelance and contract work` | `Software developer for hire.` | posture line in the hero note; `Covalent AI` in the meta row |
+| B | `Covalent AI` (mono eyebrow) | `Software developer for hire.` | supporting line + posture line in the hero note |
+| C | `Covalent AI — freelance and contract software` | `Software developer for hire.` | supporting line as the hero lead, posture line as the hero note |
+
+The old hero problem statement about requests arriving through forms, email and chat, and the
+`AI workflow systems` meta label are both deleted. They do not appear on the site.
 
 ### Meta row (variant A only)
 
-`AI workflow systems` · live clock in the visitor's local time, 12-hour with minutes and the
-local timezone abbreviation, ticking each second. Reduced-motion does not stop the clock
-(it is information, not decoration).
+`Covalent AI` · live clock in the visitor's local time, 12-hour with minutes and the local
+timezone abbreviation, ticking each second. Reduced-motion does not stop the clock (it is
+information, not decoration).
 
 ### Section: about
 
@@ -87,10 +114,12 @@ Statement:
 
 Body:
 
-> I've built this for a service business before, and the reconstruction of that work is the
-> case study on this site. I keep the scope narrow on purpose: one workflow, one intake source,
-> measured before I say it works. When a decision is uncertain or the data is sensitive, the
-> system stops and asks a person. That is a design choice, not a limitation.
+> I keep the scope narrow on purpose: one workflow, one intake source, measured before I say it
+> works. When a decision is uncertain or the data is sensitive, the system stops and asks a
+> person. That is a design choice, not a limitation.
+
+The former opening sentence of this body ("I've built this for a service business before, and the
+reconstruction of that work is the case study on this site.") is deleted. Nothing replaces it.
 
 ### Section: featured work
 
@@ -132,18 +161,22 @@ Body:
 ### Section: services
 
 Label: `Services`
-Statement: `Three things I do.`
+Statement: `Two things I do.`
 
-1. **Intake and triage automation** — Requests are validated, de-duplicated, classified, routed,
-   and recorded. Requests the system is unsure about stop for human review instead of guessing.
-2. **Answers from your own documents, with sources** — A question is answered from your
-   documents, with the passage it came from. When the documents don't support an answer, it says
-   so instead of inventing one.
-3. **Support for what I've built** — A prepaid monthly block of hours for changes, questions, and
-   fixes on the systems I built for you.
+1. **Software, automation, and integration** — I build the software that solves a business
+   problem: the internal tool that is missing, the integration between two systems that do not
+   talk to each other, the automation for work that eats a week every month. AI is optional — I
+   reach for it when it is the right tool and leave it out when it is not.
+2. **Bounded workflow, intake, and document-answer pilots** — When the actual need is a workflow,
+   an intake queue, or answers from your own documents, I run a bounded pilot: one workflow, one
+   intake source, a review gate wherever the system is unsure, fixed evaluations, and a runbook.
 
-No other service is listed. Do not add agent orchestration, chatbots, fine-tuning, dashboards,
-or "AI strategy".
+Exactly these two. Do not add a third service, a support retainer, agent orchestration, chatbots,
+fine-tuning, dashboards, or "AI strategy".
+
+Call to action in this section, visible without expanding anything:
+
+> `Email me for a price sheet` → `mailto:samuel.takata@covalent-ai.dev?subject=Price%20sheet`
 
 ### Section: how engagements work
 
@@ -154,22 +187,41 @@ Statement: `Four steps, no surprises.`
 2. **Pilot** — One workflow, one intake source, a sandbox boundary, review routing, fixed
    evaluations, and a runbook.
 3. **Implementation** — One qualified workflow with a reviewed integration and a staged handoff.
-4. **Support** — A prepaid monthly block for changes, questions, and fixes on what I built.
+4. **Support** — A monthly block for changes, questions, and fixes on what I built.
 
-Link: `See pricing` → `/pricing/`.
+Link: `Email me for a price sheet` → the price-sheet mailto above. No amounts, no payment terms
+on the page.
 
-### Section: pricing preview (variant A may show midu-style "choose your pace" cards here)
+### Section: experience (new)
 
-Heading: `Choose your pace.`
-Sub-line: `Fixed scope first, then a monthly block if you want me to keep it running.`
+Label: `Experience`
+Statement: `Where I've worked.`
 
-Cards, in this order, using the prices from `/pricing/`:
+From `active-resume.md` only. Nothing beyond this list. This is the only section that may contain
+the word `OpenAI`.
 
-1. `Pilot` — `from $3,000` — `One workflow, one intake source, sandbox boundary, review routing, fixed evaluations, runbook, handoff.`
-2. `Implementation` — `from $5,000` — `One qualified workflow, reviewed integration, staged handoff, milestone payments.`
-3. `Support` — `$750–1,500 / month` — `A prepaid block of hours each month for changes, questions, and fixes.`
+| When | Role | Detail |
+| --- | --- | --- |
+| Jan 2025 — present | Forward Deployed Engineer, OpenAI | exactly the five bullets below |
+| Jul 2024 — Dec 2024 | Contract software developer, LLMs / OpenAI | `Contract software development, focused on LLM product work.` |
+| Jun 2023 — Jul 2024 | Contract software developer | `Contract software development for multiple clients.` |
+| 2025 | B.A. Philosophy, University of Minnesota Twin Cities | one line, no bullets |
 
-Card link: `See full pricing` → `/pricing/`.
+The five Forward Deployed Engineer bullets, first person, exactly these:
+
+> - I build full-stack systems that deliver customer value.
+> - I embed with customer teams, understand their needs, and guide adoption of what I build.
+> - I scope work, sequence delivery, and remove blockers early.
+> - I make trade-offs between scope, speed, and quality, and adjust plans to protect delivery.
+> - I contribute directly in the code when progress or clarity depends on it.
+
+Do not add the resume's summary line, Research/Product feedback, internal playbooks, client
+names, internal tools, or confidential delivery.
+
+Skills, as a short list in the same section (from `active-resume.md`):
+
+> Python (automation) · JavaScript · APIs · CI/CD · General software development ·
+> LLM / GPT-family application work
 
 ### Section: FAQ
 
@@ -180,63 +232,37 @@ Statement: `Questions I get asked.`
    > One workflow and one intake source. Request validation, duplicate handling, classification,
    > routing, a review gate, fixed evaluations, an audit trail, and a runbook. I hand it over
    > with a walkthrough and seven days of defect fixes.
-2. **Will it work with the tools we already use?**
+2. **What does it cost?**
+   > There is no price list on this site. Tell me what you need and I will send the current price
+   > sheet.
+   Followed by `Email me for a price sheet` → the price-sheet mailto above. No amounts.
+3. **Will it work with the tools we already use?**
    > Integrations are scoped one at a time. The pilot runs against a sandbox boundary so nothing
    > in your live systems changes until you have seen it work.
-3. **What happens to our data during a pilot?**
+4. **What happens to our data during a pilot?**
    > The pilot uses synthetic or approved sanitized samples. I don't take regulated or sensitive
    > data into a pilot without a separate review.
-4. **How do we start?**
+5. **How do we start?**
    > Email me with the workflow that eats the most time. I'll tell you whether it is a fit and
    > what a diagnostic would cover.
 
-No legal, IP, tax, contract, or employment answers. No question about availability, rates for
-work outside the pricing page, or guarantees.
+No legal, IP, tax, contract, or employment answers. No question about rates for work outside the
+emailed price sheet, or guarantees.
 
 ### Closing band
 
-Statement: `If a queue is eating your week, tell me which one.`
+Statement: `If a problem is eating your week, tell me which one.`
 Sub: `I'll reply with whether it is a fit and what I'd look at first.`
-Button: `Email me` → `mailto:gifttakata101@gmail.com`
+Button: `Email me` → `mailto:samuel.takata@covalent-ai.dev`
 
 ---
 
-## PRICING PAGE (`/pricing/`)
+## PRICE SHEET (emailed, never on the site)
 
-Title: `Pricing`
-
-Intro:
-
-> Every engagement starts with a diagnostic. Prices are in USD and provisional; the diagnostic
-> decides the rest.
-
-Table (or cards, in the variant's own style):
-
-| Engagement | Price | What it is |
-| --- | --- | --- |
-| Diagnostic | $500–1,000, paid up front | One workflow mapped; a decision-ready plan and pilot scope. No code. |
-| Pilot | $3,000–4,500 fixed | One workflow, one intake source, sandbox boundary, review routing, fixed evaluations, audit trail, runbook, handoff. 50% to schedule, 50% after acceptance. 7 days of defect fixes. |
-| Implementation | from $5,000 | One qualified workflow with a reviewed integration and a staged handoff. Milestone payments. 14 days of defect fixes. |
-| Support retainer | $750–1,500 / month, prepaid | A capped block of hours each month for changes, questions and fixes on what I built. |
-
-Below the table, exactly these two lines:
-
-> Bigger or higher-risk work is scoped after a diagnostic.
->
-> I don't take regulated or sensitive data into a pilot without a separate review.
-
-Then a short "What a pilot assumes" list, three lines maximum:
-
-> One workflow, one intake source, and one reviewer group named before the pilot starts. A
-> sandbox boundary, so nothing in your live systems changes until you have seen the pilot work.
-> Someone on your side who can answer process questions during the build.
-
-Close with:
-
-> Not sure which one you need? Email me and describe the queue.
-> Button: `Email me` → `mailto:gifttakata101@gmail.com`
-
-No guarantees, no refunds language, no discounts, no "starting at" beyond the stated figures.
+There is no pricing page and no price card in any variant. A visitor who wants numbers emails
+`samuel.takata@covalent-ai.dev` with the subject `Price sheet`, and Taxman replies with the sheet.
+Source of truth for the sheet itself is `portfolio-posture-and-resume.md`; those figures never
+appear in `variants/`.
 
 ---
 
@@ -261,12 +287,13 @@ Breadcrumb: `Work / CIRA`
 > deployment. The knowledge corpus and demo inputs are synthetic.
 
 Render it in a quiet panel: secondary text tier, hairline border, no icon, no heading louder
-than the body. It must not appear on any other page, in full or paraphrased.
+than the body. It must not appear on any other page, in full or paraphrased. This is the **only**
+place on the site where provenance is stated.
 
 ### Demo
 
 Link to `https://covalent-ai.dev/cira/` with the note `Access by arrangement — email me.`
-The email note links to `mailto:gifttakata101@gmail.com`.
+The email note links to `mailto:samuel.takata@covalent-ai.dev`.
 
 ### Video slot
 
@@ -334,7 +361,7 @@ No hosted-model name is given on this page. Do not name any model provider beyon
 
 Intro line: `These are retained runs, not a current uptime or accuracy claim.`
 
-Table, seven rows, each linking to `https://github.com/covalent-dev/cira` (placeholder repo):
+Table, seven rows, each linking to the real repository `https://github.com/covalent-dev/cira`:
 
 | What was checked | Retained result |
 | --- | --- |
@@ -365,8 +392,8 @@ Limits paragraph:
 >   evaluation, with their retained results.
 > - **Commit history** — the work in order, including the review gate and the recovery paths.
 
-Each item links to `https://github.com/covalent-dev/cira` (placeholder: the public repository
-does not exist yet).
+Each item links to `https://github.com/covalent-dev/cira`. The repository is real now: no
+placeholder comment, no "does not exist yet" note, no `PLACEHOLDER:` marker on a repository link.
 
 ### Footer line
 
@@ -379,7 +406,8 @@ does not exist yet).
 Eyebrow: `404`
 Statement: `This page doesn't exist.`
 Body: `The link may be old, or the page may have moved.`
-Links: `Home` → `/`, `Work` → `/work/cira/`, `Pricing` → `/pricing/`.
+Links: `Home` → `/`, `Work` → `/work/cira/`, `Email me` → `mailto:samuel.takata@covalent-ai.dev`.
+No Pricing link.
 
 ---
 
@@ -396,9 +424,12 @@ Links: `Home` → `/`, `Work` → `/work/cira/`, `Pricing` → `/pricing/`.
 - Signature: a giant `covalent` wordmark filling the hero's lower half with a soft warm radial
   glow behind it (radial warm ellipse, low opacity, screen/dodge blend); top bar with the
   wordmark left, a `Menu` pill right opening a full-screen overlay menu; small meta row under
-  the hero; footer repeats the wordmark and glow.
+  the hero (`Covalent AI` + live clock + `Scroll to explore`); footer repeats the wordmark and
+  glow.
 - Section order: hero → statement + about → featured work card with tag pills → scope
-  statement → services → choose-your-pace cards → FAQ accordion → footer.
+  statement → services → four-step process → experience → FAQ accordion → footer.
+- Experience rows: two columns, the date in the 14px `--t4` tier on the left and the role,
+  bullets and skill chips on the right, over the same hairlines as `.services`/`.steps`.
 - Radii: pills 20px, cards 32px. Buttons: white pill, 18px label, 48px tall, dark text.
 
 ### B — Editorial (subone.studio)
@@ -409,9 +440,11 @@ Links: `Home` → `/`, `Work` → `/work/cira/`, `Pricing` → `/pricing/`.
   uppercase labels, eyebrows, and metadata. Set labels at 12px, uppercase, with wide tracking.
 - Headlines 56–70px at -0.04em, line-height 1; body 16px/1.6 in the `.5` tier.
 - Signature: dark moody hero with a floating video card (bottom-right) with a play button and a
-  mono caption; big editorial statements as full-width paragraphs (first line indented or
-  right-aligned); numbered section headers (`[ 01 ]  ABOUT` over a hairline); hairline dividers.
-- Content column: 24px page margins, full-width statements, 342px three-up cards for details.
+  mono caption; big editorial statements as full-width paragraphs (first line indented);
+  numbered section headers (`[ 01 ]  ABOUT` over a hairline); hairline dividers.
+- Content column: 24px page margins, full-width statements, two-up cards for services details.
+- Experience rows: subone's numbered `[ 0n ]` label, the role and its mono date, and the
+  bullets in a third column, over hairlines; skills as a mono dot-separated list.
 
 ### C — Studio (shakuro.com, translated to dark)
 
@@ -419,10 +452,13 @@ Links: `Home` → `/`, `Work` → `/work/cira/`, `Pricing` → `/pricing/`.
   `#2d2dff` used only for the primary button and links.
 - **Geist** (Google Fonts) 400/500/600/700. Headings weight 450–500 at -2px tracking;
   H1 72px, H2 40px, H3 24px.
-- Signature: left-aligned hero with a two-line headline, one-line sub, one pill button, then a
-  large rounded product panel carrying the CIRA workbench screenshot; a numbered services list;
-  a process section with a left heading column and a right accordion; a CTA band before a
+- Signature: left-aligned hero with a headline, a one-line lead, one pill button, then a
+  large rounded product panel carrying the CIRA workbench screenshot; a numbered services
+  accordion; a process section with a left heading column and a right list; a CTA band before a
   multi-column footer.
+- Experience section: the sticky `.split` aside on the left ("Where I've worked."), and a
+  numbered list on the right — a faint date line, the role title, bullets with accent dots, and
+  skill tags.
 - Gutters 156px at 1440 (clamped down for smaller widths), pill radii 48px on buttons, panels
   24–32px.
 
@@ -431,12 +467,12 @@ Links: `Home` → `/`, `Work` → `/work/cira/`, `Pricing` → `/pricing/`.
 ## ASSETS
 
 - `assets/workbench.png` — 1440×900 screenshot of the CIRA workbench at the review gate,
-  captured locally from the running service. Used by all three variants.
-- `assets/cira-workbench.jpg` — the same image, quality-88 JPEG, used by variants where the
-  extra bytes matter.
+  captured locally from the running service.
+- `assets/workbench.jpg` — the same image, quality-88 JPEG; this is the file the pages reference.
 - `assets/favicon.svg` — `c` monogram on the variant's background colour.
-- `assets/og.png` — 1200×630 Open Graph card: wordmark, the hero statement's first line, and
-  `covalent-ai.dev`.
+- `assets/og.png` — 1200×630 Open Graph card: wordmark, the hero statement, the supporting line,
+  and `covalent-ai.dev`. Re-cut in the correction pass so it no longer carries the removed hero
+  problem statement.
 
 No stock photos, no AI-generated images, no illustration. Placeholders are designed frames and
-HTML comments containing `PLACEHOLDER:`.
+HTML comments containing `PLACEHOLDER:` — video and diagram slots only, never a repository link.
