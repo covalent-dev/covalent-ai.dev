@@ -229,9 +229,9 @@ Label: `FAQ`
 Statement: `Questions I get asked.`
 
 1. **What does a pilot include?**
-   > One workflow and one intake source. Request validation, duplicate handling, classification,
-   > routing, a review gate, fixed evaluations, an audit trail, and a runbook. I hand it over
-   > with a walkthrough and seven days of defect fixes.
+   > One bounded piece of software that solves one problem: an automation, an integration, or an
+   > AI-assisted workflow when that is the actual need. It comes with tests, a runbook, and a
+   > walkthrough, and it is scoped and priced in writing before it starts.
 2. **What does it cost?**
    > There is no price list on this site. Tell me what you need and I will send the current price
    > sheet.
