@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CIRA: client intake with review and an audit trail — covalent</title>
+<meta name="description" content="A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.">
+<link rel="canonical" href="https://covalent-ai.dev/work/cira/">
+<meta property="og:title" content="CIRA: client intake with review and an audit trail — covalent">
+<meta property="og:description" content="A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="covalent — intake, triage, and answers from your own documents">
+<meta property="og:url" content="https://covalent-ai.dev/work/cira/">
+<meta property="og:site_name" content="covalent">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="amb" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__in">
+    <a class="brand" href="/">covalent</a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/work/cira/" aria-current="page">Work</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a class="nav__cta" href="mailto:gifttakata101@gmail.com">Email me</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero shell">
+    <p class="crumbs mono">
+      <a href="/work/cira/">Work</a>
+      <span class="crumbs__sep" aria-hidden="true">/</span>
+      <span>CIRA</span>
+    </p>
+    <h1 class="statement statement--hero">CIRA: client intake with review and an audit trail</h1>
+    <div class="hero__foot">
+      <p class="hero__note" data-reveal>A service business receives requests through forms, email, and support channels, and each one needs to be checked, classified, assigned, recorded, and followed up.</p>
+    </div>
+
+    <div class="quiet" data-reveal>
+      <p class="mono quiet__label">[ Disclosure ]</p>
+      <p>CIRA is a representative reconstruction of prior paid freelance work for a Minnesota company, presented with permission. The company's identity, original repositories, and confidential system details are withheld. This demonstration is the reconstruction, not the original client deployment. The knowledge corpus and demo inputs are synthetic.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== 01 demo ====== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 01 ]</p>
+      <h2 class="mono sechead__name">Demo</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Demo ]</p>
+        <div class="row__body">
+          <p class="demo-line">
+            <a href="https://covalent-ai.dev/cira/" target="_blank" rel="noopener noreferrer">covalent-ai.dev/cira<span class="vh"> (opens in a new tab)</span></a>
+            <span>Access by arrangement — <a href="mailto:gifttakata101@gmail.com">email me</a>.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot-stack">
+      <!-- PLACEHOLDER: case-study walkthrough video. No recording exists yet, so this
+           is a designed 16:9 frame standing in for it. Replace the frame with the real
+           video element once the walkthrough is recorded. -->
+      <div class="slot slot--video" data-reveal>
+        <div class="slot__in">
+          <span class="slot__play" aria-hidden="true">
+            <svg viewBox="0 0 11 13" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M0 0l11 6.5L0 13z"/></svg>
+          </span>
+          <p class="mono slot__label">Walkthrough — not recorded yet</p>
+          <p class="slot__line">A 3–5 minute walkthrough is being recorded: one request that completes, and one that stops at the review gate.</p>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER: flow diagram. The review gate and the ordered adapter steps are
+           not drawn yet, so this is a designed frame standing in for the diagram. Draw
+           it from the current implementation; do not reuse the diagram assets from the
+           CIRA repository. -->
+      <div class="slot slot--diagram" data-reveal>
+        <div class="slot__in">
+          <p class="mono slot__label">Flow diagram — in progress</p>
+          <p class="slot__line">The review gate and the ordered adapter steps, drawn from the current implementation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================== 02 what it does ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 02 ]</p>
+      <h2 class="mono sechead__name">What it does</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Intake ]</p>
+        <div class="row__body">
+          <p>For each intake, CIRA validates the request, checks for an existing completed effect, classifies type and priority, selects an owner, and assesses confidence and risk. An optional model decision can preserve or tighten the rules' safety requirements, never loosen them. Uncertain or sensitive decisions go to human review before CRM changes are allowed.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Adapter workflow ]</p>
+        <div class="row__body">
+          <p>An accepted request follows an ordered adapter workflow: duplicate lookup, contact, conversation, ticket, note, and status. In the hosted demo those effects are recorded in memory; the implemented Erxes adapter stays dormant. Postgres persists workflow results, review records, and audit events. A correlation ID ties the events together without putting the raw request message into the audit trail.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Retrieval ]</p>
+        <div class="row__body">
+          <p>The service also answers questions over a versioned document corpus, cites supporting passages, and abstains when there is insufficient support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================= 03 review and recovery =========== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 03 ]</p>
+      <h2 class="mono sechead__name">How review and recovery work</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Safety floor ]</p>
+        <div class="row__body">
+          <p>The classifier's rules establish a safety floor. A model cannot lower risk, raise confidence, remove a review reason, or bypass the gate. Malformed output, provider errors, and policy disagreement fail closed into review with no CRM changes in the recorded evaluation.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Reviewer decisions ]</p>
+        <div class="row__body">
+          <p>A reviewer can approve, reject, or request changes. Rejection and requests for changes produce no CRM effects. A conflicting second decision is rejected before the adapter is touched. Duplicate protection prevents an already completed effect from being repeated, and the container smoke record verifies replay across a restart. Allowlisted transient adapter failures receive at most one immediate retry.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Scope of the controls ]</p>
+        <div class="row__body">
+          <p>These controls make failures visible and constrain side effects. They do not establish safety for every customer environment or an unrestricted autonomous workflow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================== 04 implementation =============== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 04 ]</p>
+      <h2 class="mono sechead__name">Implementation and tradeoffs</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Stack ]</p>
+        <div class="row__body">
+          <p>CIRA uses FastAPI and Pydantic for the API contract, Postgres and Alembic for persistence and migrations, and Docker Compose for deployment. CI runs linting, tests, migrations, fixed evaluations, and a container build.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Embeddings ]</p>
+        <div class="row__body">
+          <p>Retrieval uses pgvector. The recorded hosted deployment runs a local sentence-embedding model, <code class="code">all-MiniLM-L6-v2</code>, through ONNX; a deterministic hashed-lexical provider is the offline default. Both pass the fixed four-case evaluation. In the recorded comparison, the semantic provider retrieves the expected passage at rank one for two paraphrases the lexical provider misses. That is a small, explicit check, not a retrieval-quality benchmark.</p>
+        </div>
+      </div>
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Tradeoffs ]</p>
+        <div class="row__body">
+          <p>The review gate trades automatic handling for human judgment when the evidence is uncertain. Persistent state adds a database to operate, but preserves the record across restarts. The demo's in-memory CRM makes the workflow inspectable without changing a real customer's records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================= 05 evidence and limits ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 05 ]</p>
+      <h2 class="mono sechead__name">Evidence and limits</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Retained runs ]</p>
+        <div class="row__body">
+          <p>These are retained runs, not a current uptime or accuracy claim.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ev">
+      <div class="ev__head" aria-hidden="true">
+        <p class="mono">[ What was checked ]</p>
+        <p class="mono">[ Retained result ]</p>
+      </div>
+      <ul>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Workflow and review evaluation</span>
+            <span class="ev__res">21/21 cases, including provider failure, review decisions, and CLI/API parity<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Trace integrity</span>
+            <span class="ev__res">46 referenced hashes verified; zero missing or mismatched<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">RAG evaluation</span>
+            <span class="ev__res">Four fixed cases covering answers, abstention, conflicting sources, and stale sources<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Embedding comparison</span>
+            <span class="ev__res">Both providers pass the fixed matrix against pgvector<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Hosted semantic retrieval</span>
+            <span class="ev__res">Two paraphrase answers and one abstention, recorded on 2026-09-15<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Hosted model call</span>
+            <span class="ev__res">One intake completed through the deployed service<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+            <span class="ev__what">Persistence and replay</span>
+            <span class="ev__res">Container health, migration, persisted records, and duplicate replay across restart<span class="vh"> (opens in a new tab)</span></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Limits ]</p>
+        <div class="row__body">
+          <p>These records describe specific runs. They do not establish current uptime, general model accuracy, throughput, business outcomes, or production customer traffic. The corpus contains 10 authored documents and 30 chunks. The hosted demo uses basic authentication, and review endpoints use a shared token; there is no enterprise identity, SSO, or compliance certification claim. No live Erxes write is evidenced.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== 06 how to verify ======== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 06 ]</p>
+      <h2 class="mono sechead__name">How to verify</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <div class="rows">
+      <div class="row" data-reveal>
+        <p class="row__label mono">[ Repository ]</p>
+        <div class="row__body">
+          <p>Three things to check, in the repository: the CI configuration, the fixed evaluations, and the commit history.</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="bullets">
+      <li>
+        <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+          <strong>CI</strong>
+          <span>linting, tests, migrations, fixed evaluations, and a container build on every push and pull request.<span class="vh"> (opens in a new tab)</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+          <strong>Fixed evaluations</strong>
+          <span>the workflow and review evaluation and the four-case retrieval evaluation, with their retained results.<span class="vh"> (opens in a new tab)</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/covalent-dev/cira" target="_blank" rel="noopener noreferrer">
+          <strong>Commit history</strong>
+          <span>the work in order, including the review gate and the recovery paths.<span class="vh"> (opens in a new tab)</span></span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="updated" data-reveal>Last updated 2026-09-21. This page follows the case study in the CIRA repository.</p>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <h2 class="band__statement" data-reveal="lg">If a queue is eating your week, tell me which one.</h2>
+      <p class="band__sub" data-reveal>I'll reply with whether it is a fit and what I'd look at first.</p>
+      <a class="btn" href="mailto:gifttakata101@gmail.com" data-reveal>Email me</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <a class="wm" href="/"><span>covalent</span></a>
+    <div class="footer__row">
+      <div>
+        <p class="mono footer__k">[ Email ]</p>
+        <a href="mailto:gifttakata101@gmail.com">gifttakata101@gmail.com</a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ GitHub ]</p>
+        <a href="https://github.com/covalent-dev" target="_blank" rel="noopener noreferrer">github.com/covalent-dev<span class="vh"> (opens in a new tab)</span></a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ LinkedIn ]</p>
+        <a href="https://linkedin.com/in/samuel-takata" target="_blank" rel="noopener noreferrer">linkedin.com/in/samuel-takata<span class="vh"> (opens in a new tab)</span></a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ Copyright ]</p>
+        <p>&copy; 2026 Samuel Takata</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js" defer></script>
+</body>
+</html>

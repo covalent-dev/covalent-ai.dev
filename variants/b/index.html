@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>covalent — AI systems for intake and triage</title>
+<meta name="description" content="I build systems that take routine requests off your desk: validated, classified, routed and recorded, stopping for a person when the call is not routine.">
+<link rel="canonical" href="https://covalent-ai.dev/">
+<meta property="og:title" content="covalent — AI systems for intake and triage">
+<meta property="og:description" content="I build systems that take routine requests off your desk: validated, classified, routed and recorded, stopping for a person when the call is not routine.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="covalent — intake, triage, and answers from your own documents">
+<meta property="og:url" content="https://covalent-ai.dev/">
+<meta property="og:site_name" content="covalent">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="/style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="amb" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__in">
+    <a class="brand" href="/">covalent</a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/work/cira/">Work</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li><a class="nav__cta" href="mailto:gifttakata101@gmail.com">Email me</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================================================== hero ========= -->
+  <section class="hero shell">
+    <p class="eyebrow mono">Intake, triage, and answers from your own documents</p>
+    <h1 class="statement statement--hero" data-reveal="lg">Every day, someone on your team reads the same kind of request and makes the same kind of decision. I build systems that do that part, and stop for a person when the call is not routine.</h1>
+
+    <div class="hero__foot">
+      <p class="hero__note" data-reveal>I'm Samuel Takata. I build intake and triage systems: requests validated, classified, routed, and recorded, with a review step wherever the system is unsure.</p>
+    </div>
+
+    <!-- PLACEHOLDER: hero walkthrough slot. There is no recording yet, so this is
+         a designed dark frame carrying the floating video card described in the
+         spec (light panel, 5px radius, play control, mono caption). Replace the
+         frame with the real 16:9 walkthrough when it exists. -->
+    <div class="hero__media" data-reveal>
+      <p class="hero__meta mono">covalent-ai.dev</p>
+      <div class="vcard">
+        <span class="vcard__play" aria-hidden="true">
+          <svg viewBox="0 0 11 13" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M0 0l11 6.5L0 13z"/></svg>
+        </span>
+        <span class="vcard__cap">Walkthrough — not recorded yet</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== 01 about ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 01 ]</p>
+      <h2 class="mono sechead__name">About</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">I work on the unglamorous middle of a business: the queue. Requests arrive through forms, email, and chat, and each one has to be read, sorted, routed, and written down. Most of that is routine, and the routine part is what I automate.</p>
+    <div class="row" data-reveal>
+      <p class="row__label mono">[ Context ]</p>
+      <div class="row__body">
+        <p>I've built this for a service business before, and the reconstruction of that work is the case study on this site. I keep the scope narrow on purpose: one workflow, one intake source, measured before I say it works. When a decision is uncertain or the data is sensitive, the system stops and asks a person. That is a design choice, not a limitation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ 02 featured work ====== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 02 ]</p>
+      <h2 class="mono sechead__name">Featured work</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+
+    <article class="workcard" data-reveal>
+      <a class="workcard__media" href="/work/cira/">
+        <img src="/assets/workbench.jpg" alt="The CIRA workbench during an intake that stopped at the review gate" width="1440" height="900" loading="lazy" decoding="async">
+      </a>
+      <div class="workcard__grid">
+        <div>
+          <ul class="workcard__tags mono">
+            <li>Intake</li>
+            <li>Triage</li>
+            <li>Review gate</li>
+            <li>Retrieval with citations</li>
+            <li>Audit trail</li>
+          </ul>
+          <h3 class="workcard__title">CIRA — client intake with review and an audit trail</h3>
+        </div>
+        <div class="workcard__body">
+          <p>CIRA takes a request from first contact to a recorded decision. It validates the request, checks for duplicates, classifies type and priority, picks an owner, and assesses confidence and risk. Anything uncertain or sensitive stops at a review gate before anything downstream changes. Every accepted request runs the same ordered steps and leaves an audit trail tied together by a correlation ID.</p>
+          <p>It also answers questions from a versioned document corpus. Every answer cites the passage it used, and it says "I don't know" when the documents don't support an answer.</p>
+          <a class="link" href="/work/cira/">Read the case study <span class="arw" aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================================================== 03 scope ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 03 ]</p>
+      <h2 class="mono sechead__name">Scope</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">Systems like this fail on scope, not on models.</p>
+    <div class="row" data-reveal>
+      <p class="row__label mono">[ Why this stays small ]</p>
+      <div class="row__body">
+        <p>A pilot is one workflow and one intake source. The interesting decisions happen at the edges: what counts as a duplicate, which requests must not be automated, and what the reviewer needs to see to say yes. I would rather make those edges visible in two weeks than promise a platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== 04 services ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 04 ]</p>
+      <h2 class="mono sechead__name">Services</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">Three things I do.</p>
+
+    <div class="grid3">
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 01 ]</p>
+        <h3 class="card__title">Intake and triage automation</h3>
+        <p class="card__body">Requests are validated, de-duplicated, classified, routed, and recorded. Requests the system is unsure about stop for human review instead of guessing.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 02 ]</p>
+        <h3 class="card__title">Answers from your own documents, with sources</h3>
+        <p class="card__body">A question is answered from your documents, with the passage it came from. When the documents don't support an answer, it says so instead of inventing one.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 03 ]</p>
+        <h3 class="card__title">Support for what I've built</h3>
+        <p class="card__body">A prepaid monthly block of hours for changes, questions, and fixes on the systems I built for you.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================== 05 how it works ===== -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 05 ]</p>
+      <h2 class="mono sechead__name">How it works</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">Four steps, no surprises.</p>
+
+    <ol class="steps">
+      <li class="step" data-reveal>
+        <p class="mono" aria-hidden="true">[ 01 ]</p>
+        <h3 class="step__name">Diagnostic</h3>
+        <p class="step__body">One workflow mapped, with a decision-ready plan and a pilot scope. No code.</p>
+      </li>
+      <li class="step" data-reveal>
+        <p class="mono" aria-hidden="true">[ 02 ]</p>
+        <h3 class="step__name">Pilot</h3>
+        <p class="step__body">One workflow, one intake source, a sandbox boundary, review routing, fixed evaluations, and a runbook.</p>
+      </li>
+      <li class="step" data-reveal>
+        <p class="mono" aria-hidden="true">[ 03 ]</p>
+        <h3 class="step__name">Implementation</h3>
+        <p class="step__body">One qualified workflow with a reviewed integration and a staged handoff.</p>
+      </li>
+      <li class="step" data-reveal>
+        <p class="mono" aria-hidden="true">[ 04 ]</p>
+        <h3 class="step__name">Support</h3>
+        <p class="step__body">A prepaid monthly block for changes, questions, and fixes on what I built.</p>
+      </li>
+    </ol>
+
+    <a class="link" href="/pricing/">See pricing <span class="arw" aria-hidden="true">&#8599;</span></a>
+  </section>
+
+  <!-- ================================================= 06 pricing ======= -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 06 ]</p>
+      <h2 class="mono sechead__name">Pricing</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">Choose your pace.</p>
+    <p class="lede" data-reveal>Fixed scope first, then a monthly block if you want me to keep it running.</p>
+
+    <div class="grid3">
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 01 ]</p>
+        <h3 class="card__title">Pilot</h3>
+        <p class="prow__price">from $3,000</p>
+        <p class="card__body">One workflow, one intake source, sandbox boundary, review routing, fixed evaluations, runbook, handoff.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 02 ]</p>
+        <h3 class="card__title">Implementation</h3>
+        <p class="prow__price">from $5,000</p>
+        <p class="card__body">One qualified workflow, reviewed integration, staged handoff, milestone payments.</p>
+      </article>
+      <article class="card" data-reveal>
+        <p class="mono card__n" aria-hidden="true">[ 03 ]</p>
+        <h3 class="card__title">Support</h3>
+        <p class="prow__price">$750–1,500 <span class="mono">per month</span></p>
+        <p class="card__body">A prepaid block of hours each month for changes, questions, and fixes.</p>
+      </article>
+    </div>
+
+    <a class="link" href="/pricing/">See full pricing <span class="arw" aria-hidden="true">&#8599;</span></a>
+  </section>
+
+  <!-- ===================================================== 07 faq ======= -->
+  <section class="section shell">
+    <div class="sechead" data-reveal>
+      <p class="mono sechead__n" aria-hidden="true">[ 07 ]</p>
+      <h2 class="mono sechead__name">FAQ</h2>
+      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+    </div>
+    <p class="statement" data-reveal="lg">Questions I get asked.</p>
+
+    <div class="faq">
+      <div class="qrow" data-reveal>
+        <h3 class="qrow__q">What does a pilot include?</h3>
+        <p class="qrow__a">One workflow and one intake source. Request validation, duplicate handling, classification, routing, a review gate, fixed evaluations, an audit trail, and a runbook. I hand it over with a walkthrough and seven days of defect fixes.</p>
+      </div>
+      <div class="qrow" data-reveal>
+        <h3 class="qrow__q">Will it work with the tools we already use?</h3>
+        <p class="qrow__a">Integrations are scoped one at a time. The pilot runs against a sandbox boundary so nothing in your live systems changes until you have seen it work.</p>
+      </div>
+      <div class="qrow" data-reveal>
+        <h3 class="qrow__q">What happens to our data during a pilot?</h3>
+        <p class="qrow__a">The pilot uses synthetic or approved sanitized samples. I don't take regulated or sensitive data into a pilot without a separate review.</p>
+      </div>
+      <div class="qrow" data-reveal>
+        <h3 class="qrow__q">How do we start?</h3>
+        <p class="qrow__a">Email me with the workflow that eats the most time. I'll tell you whether it is a fit and what a diagnostic would cover.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== closing band ==== -->
+  <section class="band">
+    <div class="shell">
+      <h2 class="band__statement" data-reveal="lg">If a queue is eating your week, tell me which one.</h2>
+      <p class="band__sub" data-reveal>I'll reply with whether it is a fit and what I'd look at first.</p>
+      <a class="btn" href="mailto:gifttakata101@gmail.com" data-reveal>Email me</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell">
+    <a class="wm" href="/"><span>covalent</span></a>
+    <div class="footer__row">
+      <div>
+        <p class="mono footer__k">[ Email ]</p>
+        <a href="mailto:gifttakata101@gmail.com">gifttakata101@gmail.com</a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ GitHub ]</p>
+        <a href="https://github.com/covalent-dev" target="_blank" rel="noopener noreferrer">github.com/covalent-dev<span class="vh"> (opens in a new tab)</span></a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ LinkedIn ]</p>
+        <a href="https://linkedin.com/in/samuel-takata" target="_blank" rel="noopener noreferrer">linkedin.com/in/samuel-takata<span class="vh"> (opens in a new tab)</span></a>
+      </div>
+      <div>
+        <p class="mono footer__k">[ Copyright ]</p>
+        <p>&copy; 2026 Samuel Takata</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js" defer></script>
+</body>
+</html>
