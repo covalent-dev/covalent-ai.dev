@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>covalent — AI systems for intake and triage</title>
+<meta name="description" content="I build systems that take routine requests off your desk: validated, classified, routed and recorded, stopping for a person when the call is not routine.">
+<meta property="og:title" content="covalent — AI systems for intake and triage">
+<meta property="og:description" content="I build systems that take routine requests off your desk: validated, classified, routed and recorded, stopping for a person when the call is not routine.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://covalent-ai.dev/">
+<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="mark" href="/" aria-label="covalent, home">covalent</a>
+  <button class="menu-pill" type="button" id="menu-open" aria-expanded="false" aria-controls="menu">
+    <span class="dot" aria-hidden="true"></span>Menu
+  </button>
+  <a class="btn" href="mailto:gifttakata101@gmail.com">Email me</a>
+</header>
+
+<div class="overlay" id="menu" hidden>
+  <div class="overlay-top">
+    <span class="mark">covalent</span>
+    <button class="menu-pill" type="button" id="menu-close" aria-label="Close menu">Close</button>
+  </div>
+  <nav class="overlay-nav" aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/work/cira/">Work</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="mailto:gifttakata101@gmail.com">Email me</a>
+  </nav>
+  <div class="overlay-foot">
+    <span>AI workflow systems</span>
+    <a href="https://github.com/covalent-dev">GitHub</a>
+    <a href="https://linkedin.com/in/samuel-takata">LinkedIn</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Intake, triage, and answers from your own documents</p>
+      <h1 class="statement reveal">Every day, someone on your team reads the same kind of request and
+        makes the same kind of decision. I build systems that do that part, and
+        <em>stop for a person</em> when the call is not routine.</h1>
+      <p class="hero-note reveal">I'm Samuel Takata. I build intake and triage systems: requests
+        validated, classified, routed, and recorded, with a review step wherever the system is unsure.</p>
+    </div>
+
+    <div class="meta-row">
+      <span>AI workflow systems</span>
+      <span class="meta-clock"><span class="dot" aria-hidden="true"></span><time id="clock">--:--</time>&nbsp;<span id="tz"></span></span>
+      <a class="meta-scroll" href="#about">Scroll to explore <span aria-hidden="true">&darr;</span></a>
+    </div>
+
+    <div class="wordmark-wrap" aria-hidden="true">
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+      <div class="wordmark">covalent</div>
+    </div>
+  </section>
+
+  <section class="band" id="about">
+    <div class="band-head reveal"><span>About</span><span>01</span></div>
+    <div class="band-body split">
+      <h2 class="h2 reveal">I work on the unglamorous middle of a business: the <em>queue</em>.</h2>
+      <p class="lead reveal">Requests arrive through forms, email, and chat, and each one has to be
+        read, sorted, routed, and written down. Most of that is routine, and the routine part is
+        what I automate.</p>
+      <p class="body reveal">I've built this for a service business before, and the reconstruction of
+        that work is the case study on this site. I keep the scope narrow on purpose: one workflow,
+        one intake source, measured before I say it works. When a decision is uncertain or the data
+        is sensitive, the system stops and asks a person. That is a design choice, not a
+        limitation.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-head reveal"><span>Featured work</span><span>02</span></div>
+    <article class="work-card reveal">
+      <a class="work-media" href="/work/cira/" aria-label="Read the CIRA case study">
+        <img src="/assets/workbench.jpg" width="1440" height="900"
+             alt="The CIRA workbench during an intake that stopped at the review gate">
+      </a>
+      <div class="work-body">
+        <ul class="chips">
+          <li>Intake</li><li>Triage</li><li>Review gate</li><li>Retrieval with citations</li><li>Audit trail</li>
+        </ul>
+        <h3 class="h3">CIRA — client intake with review and an audit trail</h3>
+        <p class="body">CIRA takes a request from first contact to a recorded decision. It validates
+          the request, checks for duplicates, classifies type and priority, picks an owner, and
+          assesses confidence and risk. Anything uncertain or sensitive stops at a review gate
+          before anything downstream changes. Every accepted request runs the same ordered steps
+          and leaves an audit trail tied together by a correlation ID.</p>
+        <p class="body">It also answers questions from a versioned document corpus. Every answer
+          cites the passage it used, and it says "I don't know" when the documents don't support
+          an answer.</p>
+        <a class="link-cta" href="/work/cira/">Read the case study <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </article>
+  </section>
+
+  <section class="band scope">
+    <div class="band-head reveal"><span>Scope</span><span>03</span></div>
+    <div class="band-body split">
+      <h2 class="h2 reveal">Systems like this fail on <em>scope</em>, not on models.</h2>
+      <p class="lead reveal">A pilot is one workflow and one intake source. The interesting decisions
+        happen at the edges: what counts as a duplicate, which requests must not be automated, and
+        what the reviewer needs to see to say yes. I would rather make those edges visible in two
+        weeks than promise a platform.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-head reveal"><span>Services</span><span>04</span></div>
+    <div class="band-body">
+      <h2 class="h2 reveal">Three things I <em>do</em>.</h2>
+      <ol class="services">
+        <li class="reveal">
+          <span class="num">01</span>
+          <h3 class="h3">Intake and triage automation</h3>
+          <p class="body">Requests are validated, de-duplicated, classified, routed, and recorded.
+            Requests the system is unsure about stop for human review instead of guessing.</p>
+        </li>
+        <li class="reveal">
+          <span class="num">02</span>
+          <h3 class="h3">Answers from your own documents, with sources</h3>
+          <p class="body">A question is answered from your documents, with the passage it came from.
+            When the documents don't support an answer, it says so instead of inventing one.</p>
+        </li>
+        <li class="reveal">
+          <span class="num">03</span>
+          <h3 class="h3">Support for what I've built</h3>
+          <p class="body">A prepaid monthly block of hours for changes, questions, and fixes on the
+            systems I built for you.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-head reveal"><span>How it works</span><span>05</span></div>
+    <div class="band-body">
+      <h2 class="h2 reveal">Four steps, <em>no surprises</em>.</h2>
+      <ol class="steps">
+        <li class="reveal"><span class="num">01</span><h3 class="h3">Diagnostic</h3>
+          <p class="body">One workflow mapped, with a decision-ready plan and a pilot scope. No code.</p></li>
+        <li class="reveal"><span class="num">02</span><h3 class="h3">Pilot</h3>
+          <p class="body">One workflow, one intake source, a sandbox boundary, review routing, fixed
+            evaluations, and a runbook.</p></li>
+        <li class="reveal"><span class="num">03</span><h3 class="h3">Implementation</h3>
+          <p class="body">One qualified workflow with a reviewed integration and a staged handoff.</p></li>
+        <li class="reveal"><span class="num">04</span><h3 class="h3">Support</h3>
+          <p class="body">A prepaid monthly block for changes, questions, and fixes on what I built.</p></li>
+      </ol>
+      <p class="reveal"><a class="link-cta" href="/pricing/">See pricing <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-head reveal"><span>Pricing</span><span>06</span></div>
+    <div class="band-body">
+      <h2 class="h2 reveal">Choose your <em>pace</em>.</h2>
+      <p class="lead reveal">Fixed scope first, then a monthly block if you want me to keep it running.</p>
+    </div>
+    <!-- PRICES: provisional USD figures. Edit here and on /pricing/ only. -->
+    <div class="pace">
+      <article class="tier reveal">
+        <h3 class="h3">Pilot</h3>
+        <p class="price">from $3,000</p>
+        <p class="body">One workflow, one intake source, sandbox boundary, review routing, fixed
+          evaluations, runbook, handoff.</p>
+      </article>
+      <article class="tier reveal">
+        <h3 class="h3">Implementation</h3>
+        <p class="price">from $5,000</p>
+        <p class="body">One qualified workflow, reviewed integration, staged handoff, milestone
+          payments.</p>
+      </article>
+      <article class="tier reveal">
+        <h3 class="h3">Support</h3>
+        <p class="price">$750–1,500 <span class="per">/ month</span></p>
+        <p class="body">A prepaid block of hours each month for changes, questions, and fixes.</p>
+      </article>
+    </div>
+    <!-- /PRICES -->
+    <div class="band-body">
+      <p class="reveal"><a class="link-cta" href="/pricing/">See full pricing <span aria-hidden="true">&rarr;</span></a></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band-head reveal"><span>FAQ</span><span>07</span></div>
+    <div class="band-body">
+      <h2 class="h2 reveal">Questions I get <em>asked</em>.</h2>
+      <div class="faq">
+        <details class="reveal">
+          <summary>What does a pilot include?</summary>
+          <div class="answer"><p>One workflow and one intake source. Request validation, duplicate
+            handling, classification, routing, a review gate, fixed evaluations, an audit trail, and
+            a runbook. I hand it over with a walkthrough and seven days of defect fixes.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>Will it work with the tools we already use?</summary>
+          <div class="answer"><p>Integrations are scoped one at a time. The pilot runs against a
+            sandbox boundary so nothing in your live systems changes until you have seen it work.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>What happens to our data during a pilot?</summary>
+          <div class="answer"><p>The pilot uses synthetic or approved sanitized samples. I don't take
+            regulated or sensitive data into a pilot without a separate review.</p></div>
+        </details>
+        <details class="reveal">
+          <summary>How do we start?</summary>
+          <div class="answer"><p>Email me with the workflow that eats the most time. I'll tell you
+            whether it is a fit and what a diagnostic would cover.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="closing-inner">
+      <h2 class="h2 reveal">If a queue is eating your week, <em>tell me which one</em>.</h2>
+      <p class="lead reveal">I'll reply with whether it is a fit and what I'd look at first.</p>
+      <p class="reveal"><a class="btn btn-lg" href="mailto:gifttakata101@gmail.com">Email me</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-word" aria-hidden="true">covalent</div>
+  <div class="foot-glow" aria-hidden="true"></div>
+  <div class="foot-row">
+    <a class="mark" href="/">covalent</a>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/work/cira/">Work</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="mailto:gifttakata101@gmail.com">Email</a>
+      <a href="https://github.com/covalent-dev">GitHub</a>
+      <a href="https://linkedin.com/in/samuel-takata">LinkedIn</a>
+    </nav>
+    <span class="copy">© 2026 Samuel Takata</span>
+  </div>
+</footer>
+
+<script src="/script.js" defer></script>
+</body>
+</html>
