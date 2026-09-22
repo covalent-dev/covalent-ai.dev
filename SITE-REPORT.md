@@ -23,7 +23,9 @@ posture file puts it. `Covalent AI` stays as the mono eyebrow, and it carries th
 
 **About.** Rewritten off "the queue". It now says what kind of work is taken on: software a
 business needs and does not have, plus the unglamorous internal work, with the scope and the
-human-in-the-loop habit kept as the second paragraph. Two paragraphs, first person.
+human-in-the-loop habit kept as the second paragraph. Two paragraphs, first person. The statement
+is `I build software a business needs and does not have: the internal tool, the report nobody can
+pull, the integration between two systems that never talked.`
 
 **Scope.** The statement is unchanged by instruction: `Systems like this fail on scope, not on
 models.` The body now describes the method in general terms rather than describing a pilot. It
@@ -617,8 +619,8 @@ seconds, and a timed screenshot of it is not reproducible.
 What looking at them changed:
 
 - The About statement was five lines of very large type on two sentences. The copy was shortened
-  (one clause, `I build software a business needs and does not have yet: …`), which brought it to
-  three lines at 1440 and made it read as a statement rather than a paragraph.
+  (the trailing "yet" and one clause), which brought it to four lines at 1440 from the five it
+  started at, and made it read as a statement rather than a paragraph.
 - The hero blurb was originally placed in the second half of a two-up row, which is how the old
   layout worked. It looked detached from the headline it belongs to, so it now holds the same left
   edge as the statements.
