@@ -49,9 +49,9 @@ Page titles / meta descriptions (one per page, same across variants):
 
 - `/index.html` — title `Covalent AI — software developer for hire`; description
   `Software developer for hire. Freelance and contract work: automation, integration, and the tools a team works in, with AI as a tool when it is the right one.`
-- `/work/cira/index.html` — title `CIRA: client intake with review and an audit trail — covalent`;
+- `/work/cira/index.html` — title `CIRA: client intake with review and an audit trail — Covalent AI`;
   description `A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.`
-- `/404.html` — title `Page not found — covalent`.
+- `/404.html` — title `Page not found — Covalent AI`.
 - There is no `/pricing/` page. The directory is deleted, not hidden.
 
 ---
