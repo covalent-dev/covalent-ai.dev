@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CIRA: client intake with review and an audit trail — Covalent AI</title>
+<title>CIRA: client intake with review and an audit trail | Covalent AI</title>
 <meta name="description" content="A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.">
 <link rel="canonical" href="https://covalent-ai.dev/work/cira/">
-<meta property="og:title" content="CIRA: client intake with review and an audit trail — Covalent AI">
+<meta property="og:title" content="CIRA: client intake with review and an audit trail | Covalent AI">
 <meta property="og:description" content="A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Covalent AI — software developer for hire">
+<meta property="og:image:alt" content="Covalent AI: prototype to production, without the agency">
 <meta property="og:url" content="https://covalent-ai.dev/work/cira/">
 <meta property="og:site_name" content="Covalent AI">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +29,7 @@
 
 <header class="topbar">
   <div class="shell topbar__in">
-    <a class="brand" href="/">covalent</a>
+    <a class="brand" href="/"><span class="wb"><span class="wb__g" aria-hidden="true">coval<span class="swap"><span class="swap__a">e</span><span class="swap__b">&#601;</span></span>nt</span><span class="vh">covalent</span></span></a>
     <nav class="nav" aria-label="Primary">
       <ul>
         <li><a href="/">Home</a></li>
@@ -48,9 +48,9 @@
       <span class="crumbs__sep" aria-hidden="true">/</span>
       <span>CIRA</span>
     </p>
-    <h1 class="statement statement--hero">CIRA: client intake with review and an audit trail</h1>
+    <h1 class="statement statement--hero statement--wide">CIRA: client intake with review and an audit trail</h1>
     <div class="hero__foot">
-      <p class="hero__note" data-reveal>A service business receives requests through forms, email, and support channels, and each one needs to be checked, classified, assigned, recorded, and followed up.</p>
+      <p class="hero__note" data-reveal>A service business receives requests through forms, email, and support channels. Each one has to be checked, classified, assigned, recorded, and followed up.</p>
     </div>
 
     <div class="quiet" data-reveal>
@@ -62,9 +62,9 @@
   <!-- ===================================================== 01 demo ====== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 01 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 01 ]</span>
       <h2 class="mono sechead__name">Demo</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -72,9 +72,10 @@
         <p class="row__label mono">[ Demo ]</p>
         <div class="row__body">
           <p class="demo-line">
-            <a href="https://covalent-ai.dev/cira/" target="_blank" rel="noopener noreferrer">covalent-ai.dev/cira<span class="vh"> (opens in a new tab)</span></a>
-            <span>Open to try, no login. It runs in rules-only mode, so no live model call is made; the live-model version is available on request — <a href="mailto:samuel.takata@covalent-ai.dev">email me</a>.</span>
+            <span>Open to try, no login.</span>
+            <a href="https://covalent-ai.dev/cira/" target="_blank" rel="noopener noreferrer">Open the demo<span class="vh"> (opens in a new tab)</span></a>
           </p>
+          <p class="demo-line">It runs in rules-only mode, so no live model call is made. The live-model version is available on request: <a href="mailto:samuel.takata@covalent-ai.dev">email me</a>.</p>
         </div>
       </div>
     </div>
@@ -88,7 +89,7 @@
           <span class="slot__play" aria-hidden="true">
             <svg viewBox="0 0 11 13" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M0 0l11 6.5L0 13z"/></svg>
           </span>
-          <p class="mono slot__label">Walkthrough — not recorded yet</p>
+          <p class="mono slot__label">Walkthrough: not recorded yet</p>
           <p class="slot__line">A 3–5 minute walkthrough is being recorded: one request that completes, and one that stops at the review gate.</p>
         </div>
       </div>
@@ -99,7 +100,7 @@
            CIRA repository. -->
       <div class="slot slot--diagram" data-reveal>
         <div class="slot__in">
-          <p class="mono slot__label">Flow diagram — in progress</p>
+          <p class="mono slot__label">Flow diagram: in progress</p>
           <p class="slot__line">The review gate and the ordered adapter steps, drawn from the current implementation.</p>
         </div>
       </div>
@@ -109,9 +110,9 @@
   <!-- ============================================== 02 what it does ===== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 02 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 02 ]</span>
       <h2 class="mono sechead__name">What it does</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -139,9 +140,9 @@
   <!-- ================================= 03 review and recovery =========== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 03 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 03 ]</span>
       <h2 class="mono sechead__name">How review and recovery work</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -169,9 +170,9 @@
   <!-- ================================== 04 implementation =============== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 04 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 04 ]</span>
       <h2 class="mono sechead__name">Implementation and tradeoffs</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -199,9 +200,9 @@
   <!-- ======================================= 05 evidence and limits ===== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 05 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 05 ]</span>
       <h2 class="mono sechead__name">Evidence and limits</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -268,7 +269,7 @@
       <div class="row" data-reveal>
         <p class="row__label mono">[ Limits ]</p>
         <div class="row__body">
-          <p>These records describe specific runs. They do not establish current uptime, general model accuracy, throughput, business outcomes, or production customer traffic. The corpus contains 10 authored documents and 30 chunks. The hosted demo uses basic authentication, and review endpoints use a shared token; there is no enterprise identity, SSO, or compliance certification claim. No live Erxes write is evidenced.</p>
+          <p>These records describe specific runs. They do not establish current uptime, general model accuracy, throughput, business outcomes, or production customer traffic. The corpus contains 10 authored documents and 30 chunks. The hosted demo uses basic authentication, and review endpoints use a shared token. Enterprise identity and compliance certification are out of scope for this work, and no live Erxes write is evidenced.</p>
         </div>
       </div>
     </div>
@@ -277,9 +278,9 @@
   <!-- ========================================== 06 how to verify ======== -->
   <section class="section shell">
     <div class="sechead" data-reveal>
-      <p class="mono sechead__n" aria-hidden="true">[ 06 ]</p>
+      <span class="mono sechead__mark" aria-hidden="true"><span class="sechead__n">[ 06 ]</span>
       <h2 class="mono sechead__name">How to verify</h2>
-      <p class="mono sechead__r" aria-hidden="true">&copy; 2026</p>
+      <span class="sechead__r">&copy; 2026</span></span>
     </div>
 
     <div class="rows">
@@ -312,12 +313,12 @@
       </li>
     </ul>
 
-    <p class="updated" data-reveal>Last updated 2026-09-21. This page follows the case study in the CIRA repository.</p>
+    <p class="updated" data-reveal>Last updated 2026-09-22. This page follows the case study in the CIRA repository.</p>
   </section>
 
   <section class="band">
     <div class="shell">
-      <h2 class="band__statement" data-reveal="lg">If a queue is eating your week, tell me which one.</h2>
+      <h2 class="band__statement" data-reveal="lg">If something is eating your week, tell me which one.</h2>
       <p class="band__sub" data-reveal>I'll reply with whether it is a fit and what I'd look at first.</p>
       <a class="btn" href="mailto:samuel.takata@covalent-ai.dev" data-reveal>Email me</a>
     </div>
@@ -327,7 +328,7 @@
 
 <footer class="footer">
   <div class="shell">
-    <a class="wm" href="/"><span>covalent</span></a>
+    <a class="wm" href="/"><span class="wb"><span class="wb__g" aria-hidden="true">coval<span class="swap"><span class="swap__a">e</span><span class="swap__b">&#601;</span></span>nt</span><span class="vh">covalent</span></span></a>
     <div class="footer__row">
       <div>
         <p class="mono footer__k">[ Email ]</p>
