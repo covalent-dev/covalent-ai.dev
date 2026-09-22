@@ -1,6 +1,6 @@
 # covalent-ai.dev
 
-Samuel Takata's site: Covalent AI, software developer for hire.
+Samuel Takata's site: Covalent AI. Prototype to production, without the agency.
 
 - `site/` is the web root. Plain HTML, CSS and JavaScript; no build step.
 - `CONTENT.md` is the canonical copy for the site.
@@ -24,3 +24,4 @@ rsync -rlz --delete --exclude '.well-known' "$out"/ vps:/var/www/covalent-ai.dev
 ```
 
 The three design variants built on 2026-09-21 are in the history of the `redesign-variants` branch.
+The site itself is a single design since 2026-09-22.
