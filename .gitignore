@@ -1,2 +1,5 @@
 # Local-only preview output; the variants live in git history.
 variants/
+
+# Local screenshot evidence from the acceptance run.
+site/_screens/
