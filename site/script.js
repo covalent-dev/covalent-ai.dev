@@ -1,11 +1,11 @@
 /* covalent — variant B, "Editorial"
-   Two jobs only: staggered reveal on scroll, and fitting the oversized footer
-   wordmark to the content column. No dependencies, no third-party requests. */
+   Three jobs only: staggered reveal on scroll, fitting the oversized footer
+   wordmark to the content column, and the schwa swap in the wordmark.
+   No dependencies, no third-party requests, no build step. */
 
 (function () {
   'use strict';
 
-  var root = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------------------------------------------------------------- reveals */
@@ -82,6 +82,31 @@
     window.addEventListener('resize', function () {
       clearTimeout(t);
       t = setTimeout(fitAll, 120);
+    });
+  }
+
+  /* ----------------------------------------------------------- schwa swap
+     The only glyph the site ever changes. Each wordmark instance gets its own
+     irregular delay, rescheduled after every swap, so the three of them never
+     fall into step and nothing looks like a metronome.
+
+     The glyph pair is stacked in a fixed slot in the markup, and only opacity
+     animates, so the wordmark cannot reflow. The animated glyph is hidden from
+     assistive tech and the plain word is the accessible name. */
+
+  var swaps = Array.prototype.slice.call(document.querySelectorAll('.swap'));
+
+  function schedule(slot) {
+    // 8 to 20 seconds, then swap once and schedule the next one.
+    var wait = 8000 + Math.random() * 12000;
+    slot.style.setProperty('--sw-delay', (wait / 1000).toFixed(3) + 's');
+  }
+
+  if (swaps.length && !reduce.matches) {
+    swaps.forEach(function (slot, i) {
+      // Stagger the first appearance so two wordmarks never swap together.
+      slot.style.setProperty('--sw-delay', (6 + i * 3.5 + Math.random() * 2).toFixed(3) + 's');
+      slot.addEventListener('animationiteration', function () { schedule(slot); });
     });
   }
 })();

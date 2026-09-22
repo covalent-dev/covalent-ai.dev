@@ -54,7 +54,10 @@ a { color: inherit; text-decoration: none; }
   --t-card: clamp(19px, 1.5vw, 23px);
   --t-small: 13px;
 
-  --indent: 30%;
+  --col: 70%;          /* one alignment rule: every large statement */
+  --col-body: 70%;     /* body copy: the same cap, the same left edge */
+  --col-lead: 20%;     /* a statement with a label column beside it */
+  --row-label: 250px;  /* label column: body rows start just right of the headline */
   --sect: clamp(60px, 7.4vw, 108px);
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
@@ -122,6 +125,11 @@ body {
 
 /* --- ambient background (CSS only, no images) ----------------------------- */
 
+/* Ambient motion. Two slow, low-contrast loops run without scrolling: the glow
+   layer drifts, and a faint highlight travels along the grid line above each
+   section marker. Both are transform and opacity only, both sit far below the
+   text in contrast, and both stop on their own when the tab is hidden. */
+
 .amb {
   position: fixed;
   inset: -34vmax;
@@ -132,13 +140,19 @@ body {
     radial-gradient(28% 32% at 22% 24%, rgba(126, 152, 255, .55), transparent 70%),
     radial-gradient(30% 34% at 84% 72%, rgba(255, 148, 100, .42), transparent 72%),
     radial-gradient(34% 34% at 52% 52%, rgba(255, 255, 255, .3), transparent 76%);
-  animation: drift 150s cubic-bezier(.45, 0, .55, 1) infinite alternate;
+  animation: drift 210s cubic-bezier(.45, 0, .55, 1) infinite alternate;
 }
 
 @keyframes drift {
   0%   { transform: translate3d(-2%, -1.5%, 0) scale(1); }
   50%  { transform: translate3d(2.5%, 2%, 0) scale(1.07); }
   100% { transform: translate3d(-1.5%, 3%, 0) scale(1.03); }
+}
+
+@keyframes drift-b {
+  0%   { transform: translate3d(1.5%, 2.5%, 0) scale(1.04); }
+  50%  { transform: translate3d(-2.5%, -2%, 0) scale(1); }
+  100% { transform: translate3d(2%, -1%, 0) scale(1.06); }
 }
 
 /* --- top bar -------------------------------------------------------------- */
@@ -239,6 +253,42 @@ body {
 .js .sechead::after { transform: scaleX(0); }
 .js .sechead.is-in::after { transform: scaleX(1); }
 
+/* The travelling highlight rides above the marker line on its own layer. */
+.sechead::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0 24%,
+    rgba(255, 255, 255, .34) 50%,
+    transparent 76% 100%);
+  transform: translate3d(-100%, 0, 0);
+  animation: sweep 74s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sweep {
+  0%   { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
+}
+
+/* The section marker itself breathes, slowly and faintly. */
+.sechead__mark { animation: mark-pulse 42s ease-in-out infinite; }
+
+@keyframes mark-pulse {
+  0%, 100% { opacity: .9; }
+  50%      { opacity: 1; }
+}
+
+/* The marker group is one grid item pair; display: contents keeps the three
+   parts on the header grid while leaving them one aria-hidden node. */
+.sechead__mark { display: contents; }
+
 .sechead__name { text-align: center; white-space: nowrap; }
 .sechead__n { white-space: nowrap; }
 .sechead__r { text-align: right; white-space: nowrap; }
@@ -249,7 +299,10 @@ body {
   .sechead__name { white-space: normal; }
 }
 
-/* --- editorial statements ------------------------------------------------- */
+/* --- editorial statements -------------------------------------------------
+   One alignment rule for every large statement. Flush left against the grid
+   with a deliberate left bias, capped at --col of the content width. There is
+   no hanging first-line offset anywhere. */
 
 .statement {
   font-size: var(--t-state);
@@ -257,7 +310,7 @@ body {
   line-height: 1.04;
   letter-spacing: -.04em;
   color: var(--fg);
-  text-indent: var(--indent);
+  max-width: var(--col);
   text-wrap: pretty;
   margin-top: clamp(28px, 3.4vw, 48px);
 }
@@ -269,8 +322,33 @@ body {
   text-wrap: initial;
 }
 
+.statement--center { margin-inline: auto; }
+
+/* The services statement breaks the list: it sits between the first and the
+   second service blurb, in the right column, and keeps the same left edge. */
+.statement--svc {
+  font-size: calc(var(--t-state) * .62);
+  line-height: 1.12;
+  margin-top: 0;
+  max-width: none;
+}
+
+/* A statement that shares its band with a hairline label column starts at the
+   same place as the body it belongs to, so nothing looks arbitrarily offset.
+   Below the two-column breakpoint the label sits above it, so the offset goes. */
+.statement--lead { margin-left: var(--col-lead); max-width: calc(var(--col) - var(--col-lead)); }
+
+@media (max-width: 860px) {
+  .statement--lead { margin-left: 0; max-width: var(--col); }
+}
+
+/* A long page title keeps the same left edge and the same cap, one step down in
+   size so it settles on two lines and "audit trail" stays whole. Tuned against
+   the wrap check at 1440. */
+.statement--wide { font-size: calc(var(--t-hero) * .886); }
+
 @media (max-width: 760px) {
-  .statement { text-indent: 0; line-height: 1.08; }
+  .statement { line-height: 1.08; }
   .statement--hero { line-height: 1.06; }
 }
 
@@ -285,15 +363,15 @@ body {
 
 .row {
   display: grid;
-  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
-  gap: 24px 48px;
+  grid-template-columns: var(--row-label) minmax(0, 1fr);
+  gap: 24px 28px;
   border-top: 1px solid var(--line);
   padding-block: 30px;
 }
 
 .row__label { padding-top: 4px; }
 .row__body p + p { margin-top: 16px; }
-.row__body { color: var(--fg-2); max-width: 78ch; }
+.row__body { color: var(--fg-2); max-width: 100%; }
 .row__body--fg { color: var(--fg); }
 
 @media (max-width: 860px) {
@@ -327,24 +405,21 @@ body {
 
 .hero { padding-top: clamp(40px, 5vw, 78px); }
 
+/* The blurb keeps the same left edge and the same run as the statements. */
+
 .hero__foot {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px 48px;
   border-top: 1px solid var(--line);
   margin-top: clamp(28px, 3.4vw, 46px);
   padding-top: 22px;
 }
 
 .hero__note {
-  grid-column: 2;
   color: var(--fg-2);
-  max-width: 56ch;
+  max-width: var(--col-body);
 }
 
 @media (max-width: 860px) {
-  .hero__foot { grid-template-columns: 1fr; gap: 14px; }
-  .hero__note { grid-column: 1; }
+  .hero__note { max-width: 100%; }
 }
 
 .hero__media {
@@ -373,6 +448,26 @@ body {
   -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .25) 70%, transparent 100%);
   mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .25) 70%, transparent 100%);
   pointer-events: none;
+}
+
+/* A second grid, dimmer and offset by half a cell, drifts across the first.
+   Two hairline layers at low opacity read as motion in the panel without the
+   panel itself moving. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, .055) 1px, transparent 1px);
+  background-size: 58px 100%;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .18) 70%, transparent 100%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, .18) 70%, transparent 100%);
+  animation: grid-drift 96s cubic-bezier(.45, 0, .55, 1) infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes grid-drift {
+  0%   { transform: translate3d(-29px, 0, 0); }
+  100% { transform: translate3d(29px, 0, 0); }
 }
 
 .hero__meta {
@@ -495,25 +590,28 @@ body {
 .link .arw { display: inline-block; transition: transform .3s var(--ease); }
 .link:hover .arw { transform: translate(3px, -3px); }
 
-/* --- two-up grid ---------------------------------------------------------- */
+/* --- services -------------------------------------------------------------
+   Two columns. The "What I build." statement sits in the right column,
+   between the first and the second service blurb, so it breaks the list. */
 
-.grid2 {
+.svc {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(22px, 3vw, 40px);
+  gap: 0 clamp(24px, 3vw, 48px);
   margin-top: clamp(28px, 3.4vw, 48px);
 }
 
+.svc__col { display: grid; align-content: start; }
+
 @media (min-width: 1180px) {
-  .grid2 {
+  .svc {
     grid-template-columns: repeat(2, minmax(0, 520px));
     justify-content: space-between;
-    gap: 24px;
   }
 }
 
 @media (max-width: 780px) {
-  .grid2 { grid-template-columns: 1fr; gap: 0; }
+  .svc { grid-template-columns: 1fr; }
 }
 
 .card {
@@ -533,9 +631,19 @@ body {
 
 .card__body { margin-top: 12px; color: var(--fg-2); }
 
+@media (min-width: 781px) {
+  .card + .card,
+  .statement--svc + .card { margin-top: clamp(30px, 3.4vw, 48px); }
+  .statement--svc + .card { padding-top: 20px; }
+}
+
 @media (max-width: 780px) {
   .card { padding-block: 22px 22px; border-top: 1px solid var(--line); }
-  .card:first-child { border-top: 1px solid var(--line-2); }
+  .statement--svc {
+    padding-block: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .statement--svc + .card { border-top: 1px solid var(--line); }
 }
 
 /* --- numbered step rows --------------------------------------------------- */
@@ -565,9 +673,16 @@ body {
   .step__name { margin-top: 2px; }
 }
 
-/* --- experience ----------------------------------------------------------- */
+/* --- experience -----------------------------------------------------------
+   The section is centred on the page. Inside it the text keeps its left edge,
+   so nothing is ragged-set. */
 
-.xp { margin-top: clamp(26px, 3vw, 44px); border-bottom: 1px solid var(--line); }
+.xp {
+  max-width: var(--col-body);
+  margin-inline: auto;
+  margin-top: clamp(26px, 3vw, 44px);
+  border-bottom: 1px solid var(--line);
+}
 
 .xp__row {
   display: grid;
@@ -608,6 +723,31 @@ body {
 .xp__tags li { color: var(--fg-2); }
 .xp__tags li + li::before { content: "· "; }
 
+/* --- skills (groupings from active-resume.md) ----------------------------- */
+
+.skills {
+  grid-column: 2 / -1;
+  display: grid;
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .skills { grid-column: 1; }
+}
+
+.skills__group {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 6px 24px;
+  align-items: baseline;
+}
+
+.skills__group dd { color: var(--fg-2); }
+
+@media (max-width: 620px) {
+  .skills__group { grid-template-columns: 1fr; gap: 4px; }
+}
+
 @media (max-width: 860px) {
   .xp__row { grid-template-columns: 1fr; gap: 8px; padding-block: 24px; }
   .xp__role { margin-top: 2px; }
@@ -615,7 +755,11 @@ body {
 
 /* --- FAQ ------------------------------------------------------------------ */
 
-.faq { margin-top: clamp(26px, 3vw, 44px); border-bottom: 1px solid var(--line); }
+.faq {
+  max-width: var(--col-body);
+  margin-top: clamp(26px, 3vw, 44px);
+  border-bottom: 1px solid var(--line);
+}
 
 .qrow {
   display: grid;
@@ -650,22 +794,13 @@ body {
   font-weight: 500;
   line-height: 1.04;
   letter-spacing: -.04em;
-  text-indent: var(--indent);
-  max-width: 100%;
+  max-width: var(--col);
 }
 
 .band__sub {
   margin-top: 22px;
   color: var(--fg-2);
-  max-width: 60ch;
-}
-
-@media (min-width: 861px) {
-  .band__sub { margin-left: var(--indent); }
-}
-
-@media (max-width: 760px) {
-  .band__statement { text-indent: 0; line-height: 1.08; }
+  max-width: var(--col);
 }
 
 .btn {
@@ -825,8 +960,6 @@ body {
 
 .rows { margin-top: clamp(24px, 3vw, 40px); }
 
-.statement--flat { text-indent: 0; }
-
 /* --- footer --------------------------------------------------------------- */
 
 .footer {
@@ -871,9 +1004,70 @@ body {
   white-space: nowrap;
 }
 
-.wm span { display: inline-block; white-space: nowrap; }
+.wm > span { display: inline-block; white-space: nowrap; }
 
 .wm:hover { color: var(--fg-2); }
+
+/* --- wordmark and the schwa swap ------------------------------------------
+   Markup-driven: only the three wordmark instances carry .wb (the header
+   logo, the footer wordmark, and the "Covalent AI" label). Nothing in body
+   copy, the email address, a URL or a page title is touched.
+
+   The "e" and the "ə" are stacked in the same grid cell, so the slot is as
+   wide as the wider glyph before any animation starts. The line cannot
+   reflow, and only opacity animates. */
+
+.wb { display: inline-block; }
+
+.wb__g { display: inline-block; }
+
+.swap {
+  display: inline-grid;
+  vertical-align: baseline;
+}
+
+.swap > span {
+  grid-area: 1 / 1;
+  animation-duration: 2.9s;
+  animation-timing-function: var(--ease);
+  animation-delay: var(--sw-delay, 9s);
+  animation-iteration-count: infinite;
+}
+
+.swap__a { opacity: 1; animation-name: schwa-out; }
+.swap__b { opacity: 0; animation-name: schwa-in; }
+
+@keyframes schwa-out {
+  0%   { opacity: 1; }
+  4%   { opacity: 1; }
+  10%  { opacity: 0; }
+  72%  { opacity: 0; }
+  78%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes schwa-in {
+  0%   { opacity: 0; }
+  4%   { opacity: 0; }
+  10%  { opacity: 1; }
+  72%  { opacity: 1; }
+  78%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Reading and keyboard use win: no swap while the wordmark is hovered or
+   focused. */
+.wm:hover .swap > span,
+.brand:hover .swap > span,
+.wb:focus-within .swap > span { animation: none; }
+
+.wm:hover .swap__b, .brand:hover .swap__b { opacity: 0; }
+.wm:hover .swap__a, .brand:hover .swap__a { opacity: 1; }
+
+/* The header logo sets its own size; the fitting code in script.js only
+   measures .wm. */
+.brand .wb { font-size: 19px; }
+
 
 .footer__note {
   margin-top: 10px;
@@ -954,7 +1148,19 @@ body {
 .js [data-reveal="lg"] { --rv-y: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .amb { animation: none; }
+  /* Every ambient loop and the schwa swap stop here, and each one is left in
+     its resting state rather than paused mid-move. */
+  .amb,
+  .sechead::before,
+  .sechead__mark,
+  .hero__media::after,
+  .swap > span { animation: none; }
+
+  .sechead::before { transform: translate3d(-100%, 0, 0); }
+  .sechead__mark { opacity: 1; }
+  .hero__media::after { transform: none; }
+  .swap__a { opacity: 1; }
+  .swap__b { opacity: 0; }
 
   .js [data-reveal],
   .js [data-reveal].is-in {
@@ -976,4 +1182,14 @@ body {
 @media print {
   .amb, .topbar, .vcard, .slot__play { display: none; }
   body { color: #000; background: #fff; }
+
+  /* Nothing animates on paper either, and the wordmark prints as "covalent". */
+  .amb,
+  .sechead::before,
+  .sechead__mark,
+  .hero__media::after,
+  .swap > span { animation: none; }
+
+  .swap__a { opacity: 1; }
+  .swap__b { opacity: 0; }
 }
