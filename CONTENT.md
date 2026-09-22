@@ -319,7 +319,7 @@ available on request:` followed by the `email me` mailto link.
 ### Video slot
 
 A designed placeholder frame, 16:9, labelled `Walkthrough: not recorded yet`, with the line
-`A 3–5 minute walkthrough is being recorded: one request that completes, and one that stops at the
+`A 3–5 minute walkthrough will be posted here: one request that completes, and one that stops at the
 review gate.` Mark with `<!-- PLACEHOLDER: ... -->`.
 
 ### Diagram slot

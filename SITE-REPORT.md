@@ -666,3 +666,24 @@ JavaScript to schedule it at irregular intervals. The whole runtime is 3,986 byt
 dependency and no build step. Framer would add a framework, a build, and a hosting story to replace
 about forty lines of CSS, and it would take the page's type and grid away from plain CSS.
 Recommendation: rejected, as §6 already anticipated.
+
+---
+
+## 4. Review fixes (Claude, 2026-09-22)
+
+Reviewed against the 18 checks in the spec. Sixteen passed as reported. Two items were fixed here:
+
+1. **Check 13, the CIRA page title.** It rendered on two lines at 1440 with "an audit trail" alone
+   on the second, which is the orphan the request was about. `.statement--wide` moved from
+   `calc(var(--t-hero) * .886)` (62px at 1440) to `clamp(30px, 3.3vw, 48px)`. Measured after the
+   change: one line at 1440 (48px, 950px of text in a 964px box), 1280 (42.24px) and 1100 (36.3px,
+   726px box, a single pixel of margin at 3.34vw, which is why the factor is 3.3). It wraps below
+   about 900px by design, and the phone size is unchanged at 30px. No horizontal scroll at 375,
+   1100, 1280 or 1440.
+2. **An unsupported claim on the CIRA page.** "A 3-5 minute walkthrough is being recorded" said a
+   recording was in progress. It is not. Changed to "will be posted here", in the page and in
+   `CONTENT.md`.
+
+Still open, not fixed here: `site/assets/og.png` is the 2026-09-21 cut and still shows the retired
+"Software developer for hire." Link previews will show it until the image is re-cut. That is design
+work and it is Taxman's call.

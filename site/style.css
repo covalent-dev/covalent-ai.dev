@@ -345,7 +345,9 @@ body {
 /* A long page title keeps the same left edge and the same cap, one step down in
    size so it settles on two lines and "audit trail" stays whole. Tuned against
    the wrap check at 1440. */
-.statement--wide { font-size: calc(var(--t-hero) * .886); }
+/* The CIRA page title gets its own scale so "an audit trail" is not orphaned on
+   its own line: one line from roughly 900px up, and unchanged on phones. */
+.statement--wide { font-size: clamp(30px, 3.3vw, 48px); }
 
 @media (max-width: 760px) {
   .statement { line-height: 1.08; }
