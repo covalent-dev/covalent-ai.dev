@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>og.png generator — Covalent AI social card</title>
+<!--
+  Source for site/assets/og.png, the 1200x630 Open Graph card.
+
+  Rebuild it with headless Chrome, from the repository root:
+
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --hide-scrollbars --force-device-scale-factor=1 \
+      --window-size=1200,630 --virtual-time-budget=4000 \
+      --screenshot=site/assets/og.png "file://$PWD/tools/og-card.html"
+
+  The `--virtual-time-budget` matters: without it the screenshot can be taken
+  before the webfonts apply, and the card renders in a fallback face. With it,
+  three consecutive renders were byte-identical and pixel-identical to a render
+  that waited on `document.fonts.ready`.
+
+  Keep the output at 1200x630 and under 200 KB. The card uses the site's own two
+  fonts (Instrument Sans 500 and Geist Mono) from Google Fonts, so it needs
+  network access at render time. The mono line, the headline and the supporting
+  line come from CONTENT.md; change them here when the hero changes.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500&amp;display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+
+  body {
+    position: relative;
+    background: #000;
+    color: #fff;
+    font-family: "Instrument Sans", system-ui, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono {
+    font-family: "Geist Mono", ui-monospace, Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .5);
+  }
+
+  .top {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    top: 58px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .rule {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    top: 96px;
+    height: 1px;
+    background: rgba(255, 255, 255, .16);
+  }
+
+  /* One alignment rule, the same as the site: flush left against the card's
+     grid, capped at 70% of the content width. No hanging first-line offset. */
+  .statement {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    top: 158px;
+    max-width: 750px;
+    font-size: 50px;
+    line-height: 1.06;
+    font-weight: 500;
+    letter-spacing: -.04em;
+  }
+
+  .sub {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    top: 302px;
+    max-width: 750px;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: -.015em;
+    color: rgba(255, 255, 255, .5);
+  }
+
+  /* The wordmark fits the content column (1200 - 128 = 1072px) and is cropped
+     by the bottom edge, as it is on the previous card. 361px per 100px is the
+     measured width of "covalent" at these letter settings. */
+  .word {
+    position: absolute;
+    left: 64px;
+    right: 64px;
+    bottom: -30px;
+    font-size: 296px;
+    line-height: .9;
+    font-weight: 500;
+    letter-spacing: -.045em;
+    white-space: nowrap;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+  <div class="top">
+    <span class="mono">Covalent AI / covalent-ai.dev</span>
+    <span class="mono">&copy; 2026</span>
+  </div>
+  <div class="rule"></div>
+
+  <p class="statement">Prototype to production, without the agency.</p>
+
+  <p class="sub">Freelance and contract software development: integrations, internal tools, automation, and AI/LLM integration.</p>
+
+  <p class="word">covalent</p>
+
+</body>
+</html>
