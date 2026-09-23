@@ -12,7 +12,9 @@ agency that hands it off. CIRA is one example of that work, not the identity.
 Hard rules that apply to every string below:
 
 - First person singular. Never "we", never "the studio", never "the team". (The FAQ questions talk
-  about the visitor's team, which is fine; the answers are first person.)
+  about the visitor's team, which is fine; the answers are first person.) The About statement and
+  its Context paragraphs are the one deliberate exception: they are descriptive and carry no
+  first-person pronoun at all.
 - **Software first, AI as a tool.** The site is not an AI agency or an "AI consultancy".
 - **No prices anywhere.** No dollar amounts, no price cards, no `/pricing/` page. The only money
   call to action is the price-sheet email:
@@ -32,8 +34,10 @@ Hard rules that apply to every string below:
 - No em dash or en dash inside a prose sentence. Date ranges (`Jan 2025 — present`) and numeric
   ranges (`3–5 minute`) may keep one.
 - The disclosure paragraph below appears **once, on `/work/cira/` only**. Never repeat or
-  paraphrase it anywhere else. The home-page work card must not state or imply who CIRA was built
-  for.
+  paraphrase it anywhere else. The home-page work card may say the work was built for a client, and
+  it then carries one short clause saying what is shown is a permissioned reconstruction with the
+  case study named as where the details are. It never names the client and never repeats the
+  disclosure.
 
 Identity:
 
@@ -54,15 +58,15 @@ Identity:
 Page titles / meta descriptions:
 
 - `/index.html` — title `Covalent AI: prototype to production, without the agency`; description
-  `Freelance and contract software development: internal tools, automation, integrations, and AI features where they genuinely help.`
+  `Freelance and contract software development: integrations, internal tools, automation, and AI/LLM integration.`
 - `/work/cira/index.html` — title `CIRA: client intake with review and an audit trail | Covalent AI`;
   description `A worked example of intake that validates, classifies and routes requests, stops uncertain ones for human review, and answers questions from a document corpus with citations.`
 - `/404.html` — title `Page not found | Covalent AI`.
 - There is no `/pricing/` page. The directory is deleted, not hidden.
 
-The og:image (`assets/og.png`) is the 2026-09-21 cut and still reads `Software developer for hire.`
-It needs a re-cut to the new headline; that asset work is deferred, and the alt text already
-matches the new title.
+The og:image (`assets/og.png`) was re-cut on 2026-09-22 for the current headline, `Prototype to
+production, without the agency.`, with the hero blurb as its supporting line. 1200×630, under
+200 KB. The generator is `tools/og-card.html`; the alt text on all three pages describes the card.
 
 ---
 
@@ -88,8 +92,11 @@ Headline (H1, exact):
 
 Blurb under the headline (exact):
 
-> Freelance and contract software development: internal tools, automation, integrations, and AI
-> features where they genuinely help.
+> Freelance and contract software development: integrations, internal tools, automation, and AI/LLM
+> integration.
+
+The four things named are the four from the previous version. The list was reordered so "integrations"
+and "AI/LLM integration" are not adjacent, and the sentence ends on `AI/LLM integration.`
 
 No name in the hero. The name and the roles belong in Experience.
 
@@ -102,17 +109,20 @@ Label: `About`
 
 Statement:
 
-> I build software a business needs and does not have yet: the internal tool, the report nobody can
-> pull, the integration between two systems that never talked.
+> Building software solutions businesses need but do not have: internal tools, reports no one can
+> pull, and integrations between systems.
+
+Descriptive, not first person. No pronoun in it, no personality and no joke.
 
 Body, under the label `[ Context ]`:
 
-> Most of that work is unglamorous and internal, which suits me. It is usually the reason someone
-> is staying late, and almost nobody wants to own it. I have built this kind of software on contract
-> and as a forward deployed engineer.
+> Most of that work is unglamorous and internal. It is usually the reason someone is staying late,
+> and almost nobody wants to own it.
 >
-> I keep the work small on purpose. One workflow, one source, measured before I call it done, with a
-> person in the loop when a decision is uncertain. That is how delivery stays predictable.
+> The scope stays small on purpose. One workflow, one source, measured before it is called done,
+> with a person in the loop when a decision is uncertain. That is how delivery stays predictable.
+
+Neither paragraph uses a first-person pronoun, and neither names an employer.
 
 ### Section: featured work
 
@@ -124,41 +134,47 @@ Card tags: `Intake` · `Triage` · `Review gate` · `Retrieval with citations` �
 
 Card text:
 
-> CIRA takes a request from first contact to a recorded decision. It validates the request, checks
-> for duplicates, classifies type and priority, picks an owner, and assesses confidence and risk.
-> Anything uncertain or sensitive stops at a review gate before anything downstream changes. Every
-> accepted request runs the same ordered steps and leaves an audit trail tied together by a
-> correlation ID.
+> CIRA is a purpose-built application for a client that needed requests arriving through forms,
+> email, and support channels checked, classified, assigned, recorded, and followed up. It handles
+> that intake in one place, keeps a record of each request, and stops anything uncertain for a
+> person to review before anything else changes.
 >
-> It also answers questions from a versioned document corpus. Every answer cites the passage it
-> used, and when the documents do not support an answer it says so.
+> What is shown here is a permissioned reconstruction; the case study has the details.
+
+Problem first, in the buyer's words. No adapter names, no correlation IDs, no provider talk, no
+outcome or volume claim. The second paragraph is the single provenance pointer; the disclosure
+itself stays on `/work/cira/` only.
 
 Card footer line: `Read the case study` (links to `/work/cira/`).
 
 The card carries a workbench image with alt text `The CIRA workbench during an intake that stopped
-at the review gate`. It must not name or hint at who the system was built for.
+at the review gate`. It never names the client.
 
 ### Section: why this stays small
 
 Label: `Scope`
 
-Statement: `Systems like this fail on scope, not on models.`
+Statement: `Systems fail on scope, not on models.`
 
 Body, under the label `[ Why this stays small ]`:
 
-> Starting small is the method, not a hedge. The decisions that shape the software sit at the edges:
-> what counts as a duplicate, which requests must never be automated, and what the reviewer needs to
-> see to say yes. I would rather make those decisions visible in two weeks than promise a platform.
+> Small scope is deliberate. The decisions that matter in any build sit at its edges: what counts
+> as done, where a person has to approve, and what must never be automated. Agreeing those edges
+> early is most of the work, and a first version runs before the build grows.
+
+General delivery philosophy, not CIRA-shaped. The labelled block below the statement carries a
+`clamp(28px, 3.4vw, 48px)` top margin so it no longer sits on the statement's baseline box.
 
 ### Section: services
 
 Label: `Services`
 
-Statement, and where it sits: `What I build.` is placed **between the first and the second service
-blurb**, in the right column, so it breaks the list instead of sitting on top of it.
+Statement, and where it sits: `What I build.` holds the **left column** of the services grid,
+directly beneath the `[ 04 ] Services` label row, vertically centred against the block of four
+service cards. The cards read 01 to 04 across the block.
 
 1. **Internal tools and automation**
-   > The admin work, the reporting, and the data entry that eats someone's week. I build the tool
+   > The admin work, the reporting, and the data entry that nobody has time for. I build the tool
    > that replaces it, sized so the first version is running while the problem is still worth
    > solving.
 2. **Integrations and data plumbing**
@@ -179,6 +195,9 @@ Exactly these four. No support retainer, agent orchestration, chatbots, fine-tun
 Call to action under the section, visible without expanding anything:
 
 > `Email me for a price sheet` → `mailto:samuel.takata@covalent-ai.dev?subject=Price%20sheet`
+
+This is the only place the link appears other than the FAQ cost answer. The duplicate at the end of
+`How it works` was removed; there is one price-sheet link in section 04 and one in the FAQ.
 
 ### Section: how engagements work
 
@@ -252,14 +271,14 @@ Statement: `Questions I get asked.`
    > sheet.
    Followed by `Email me for a price sheet` → the price-sheet mailto above. No amounts.
 3. **Will it work with the tools we already use?**
-   > That is usually the point. I connect to the systems you already run, and the first build goes
+   > That is often the goal. I connect to the systems you already run, and the first build goes
    > against a sandbox boundary, so nothing in your live systems changes until you have seen it
    > work.
 4. **What happens to our data during a pilot?**
    > A pilot uses synthetic or approved sanitized samples. I don't take regulated or sensitive data
    > into one without a separate review.
 5. **How do we start?**
-   > Email me with the work that eats the most time. I'll tell you whether it is a fit and what a
+   > Email me with the job you keep putting off. I'll tell you whether it is a fit and what a
    > diagnostic would cover.
 
 No legal, IP, tax, contract, or employment answers. No question about rates for work outside the
@@ -267,9 +286,13 @@ emailed price sheet, or guarantees.
 
 ### Closing band
 
-Statement: `If something is eating your week, tell me which one.`
+Statement on the home page: `If something takes more of your week than it should, tell me which one.`
+Statement on `/work/cira/`: `If this kind of process still runs by hand, tell me which one.`
 Sub: `I'll reply with whether it is a fit and what I'd look at first.`
 Button: `Email me` → `mailto:samuel.takata@covalent-ai.dev`
+
+The retired line about a working week being eaten is gone from both pages, and neither page swaps in
+the same sentence as a stock replacement.
 
 ---
 
@@ -458,6 +481,9 @@ One design, the former variant B ("Editorial"), after subone.studio.
   instance reschedules 8–20s after its last swap, so the three never fall into step.
   `prefers-reduced-motion: reduce` stops it, and a hidden tab stops it, both leaving the plain "e".
   The animated glyph is `aria-hidden` and the accessible name of every wordmark is `covalent`.
+- The animated glyph is red, so it reads against the white wordmark. The colour is one custom
+  property, `--wm-swap: #ff4a35`, set once in `:root` and applied to `.swap__b`, which is the `ə`
+  slot in every wordmark instance on all three pages.
 
 ---
 
@@ -467,8 +493,10 @@ One design, the former variant B ("Editorial"), after subone.studio.
   captured locally from the running service.
 - `assets/workbench.jpg` — the same image, quality-88 JPEG; this is the file the pages reference.
 - `assets/favicon.svg` — `c` monogram on the background colour.
-- `assets/og.png` — 1200×630 Open Graph card from the 2026-09-21 cut. It still carries the retired
-  hero line `Software developer for hire.` and needs a re-cut to the new headline. Deferred.
+- `assets/og.png` — 1200×630 Open Graph card, re-cut on 2026-09-22. It carries the current headline
+  `Prototype to production, without the agency.` and the current hero blurb as its supporting line,
+  in the same black card and the same type treatment as the site. Rebuild it by rendering
+  `tools/og-card.html` at 1200×630 (the command is in a comment in that file).
 
 No stock photos, no AI-generated images, no illustration. Placeholders are designed frames and
 HTML comments containing `PLACEHOLDER:` — video and diagram slots only, never a repository link.
