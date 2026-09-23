@@ -42,6 +42,10 @@ a { color: inherit; text-decoration: none; }
   --panel-2: rgba(255, 255, 255, .06);
   --r: 5px;
 
+  /* The one place the animated schwa colour is set. Warm red, 6.3:1 against
+     #000 and clearly distinct from the white wordmark it sits in. */
+  --wm-swap: #ff4a35;
+
   --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
@@ -1046,7 +1050,7 @@ body {
 }
 
 .swap__a { opacity: 1; animation-name: schwa-out; }
-.swap__b { opacity: 0; animation-name: schwa-in; }
+.swap__b { opacity: 0; animation-name: schwa-in; color: var(--wm-swap); }
 
 @keyframes schwa-out {
   0%   { opacity: 1; }
