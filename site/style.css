@@ -324,9 +324,10 @@ body {
 
 .statement--center { margin-inline: auto; }
 
-/* The services statement breaks the list: it sits between the first and the
-   second service blurb, in the right column, and keeps the same left edge. */
+/* The services statement is the left column of the services grid: it sits
+   directly under the section label row and centres against the four cards. */
 .statement--svc {
+  align-self: center;
   font-size: calc(var(--t-state) * .62);
   line-height: 1.12;
   margin-top: 0;
@@ -341,6 +342,11 @@ body {
 @media (max-width: 860px) {
   .statement--lead { margin-left: 0; max-width: var(--col); }
 }
+
+/* The labelled block under the scope statement used to start on the
+   statement's own baseline box. It now gets the same step above it that the
+   statement has below the label row. */
+.statement--lead + .row { margin-top: clamp(28px, 3.4vw, 48px); }
 
 /* A long page title keeps the same left edge and the same cap, one step down in
    size so it settles on two lines and "audit trail" stays whole. Tuned against
@@ -593,27 +599,34 @@ body {
 .link:hover .arw { transform: translate(3px, -3px); }
 
 /* --- services -------------------------------------------------------------
-   Two columns. The "What I build." statement sits in the right column,
-   between the first and the second service blurb, so it breaks the list. */
+   The "What I build." statement holds the left column, directly beneath the
+   section label row, and is centred against the block of four service cards.
+   The cards read 01 to 04 across a two-by-two block. */
 
 .svc {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(24px, 3vw, 48px);
+  grid-template-columns: 1fr;
+  gap: clamp(30px, 3.4vw, 48px) clamp(24px, 3vw, 48px);
   margin-top: clamp(28px, 3.4vw, 48px);
+  align-items: start;
 }
 
-.svc__col { display: grid; align-content: start; }
+@media (min-width: 781px) {
+  .svc { grid-template-columns: minmax(210px, 1fr) minmax(0, 2.2fr); }
+}
 
 @media (min-width: 1180px) {
-  .svc {
-    grid-template-columns: repeat(2, minmax(0, 520px));
-    justify-content: space-between;
-  }
+  .svc { grid-template-columns: 300px minmax(0, 1fr); }
 }
 
-@media (max-width: 780px) {
-  .svc { grid-template-columns: 1fr; }
+.svc__cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(30px, 3.4vw, 48px) clamp(20px, 2.4vw, 40px);
+}
+
+@media (min-width: 1040px) {
+  .svc__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 .card {
@@ -633,19 +646,15 @@ body {
 
 .card__body { margin-top: 12px; color: var(--fg-2); }
 
-@media (min-width: 781px) {
-  .card + .card,
-  .statement--svc + .card { margin-top: clamp(30px, 3.4vw, 48px); }
-  .statement--svc + .card { padding-top: 20px; }
-}
-
 @media (max-width: 780px) {
-  .card { padding-block: 22px 22px; border-top: 1px solid var(--line); }
+  .svc { gap: 0; }
+  .svc__cards { gap: 0; }
   .statement--svc {
+    align-self: start;
     padding-block: 22px;
     border-top: 1px solid var(--line);
   }
-  .statement--svc + .card { border-top: 1px solid var(--line); }
+  .card { padding-block: 22px 22px; border-top: 1px solid var(--line); }
 }
 
 /* --- numbered step rows --------------------------------------------------- */
