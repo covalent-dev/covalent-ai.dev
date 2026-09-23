@@ -18,7 +18,7 @@ The site is served by nginx on the VPS from `/var/www/covalent-ai.dev`. Deploy t
 `site/` directory with versioned CSS and JS URLs, because nginx caches those for 30 days:
 
 ```bash
-v=$(git rev-parse --short HEAD); out=$(mktemp -d); cp -R site/. "$out"
+v=$(git rev-parse --short HEAD); out=$(mktemp -d); cp -R site/. "$out"; rm -rf "$out/_screens"
 find "$out" -name '*.html' -exec sed -i '' -e "s#/style.css\"#/style.css?v=$v\"#g" -e "s#/script.js\"#/script.js?v=$v\"#g" {} +
 rsync -rlz --delete --exclude '.well-known' "$out"/ vps:/var/www/covalent-ai.dev/
 ```
