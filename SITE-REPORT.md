@@ -687,3 +687,593 @@ Reviewed against the 18 checks in the spec. Sixteen passed as reported. Two item
 Still open, not fixed here: `site/assets/og.png` is the 2026-09-21 cut and still shows the retired
 "Software developer for hire." Link previews will show it until the image is re-cut. That is design
 work and it is Taxman's call.
+
+---
+
+# Tweaks v3
+
+Run: site tweaks v3, from `site-tweaks-v3-spec.md`. Branch `site-posture-v2`, continuing from
+`5da477c`. Date: 2026-09-22. Nothing was deployed and nothing was pushed. The CIRA repository, the
+demo, the server and `/Users/taxman/Andromeda-v2` were read only, with the single exception noted
+in §4 below, which the owner asked for by name in this run.
+
+Files changed: `site/index.html`, `site/work/cira/index.html`, `site/style.css`,
+`site/assets/og.png`, `CONTENT.md`, new `tools/og-card.html`, fresh screenshots in `site/_screens/`
+(gitignored). `site/404.html` and `site/script.js` are untouched: the 404 copy holds no retired
+phrase, and the schwa colour is CSS only. Every measurement below was taken after a reload at the
+target viewport, per the note in the spec.
+
+Commits, in order:
+
+```
+c044268 Rewrite the home page copy for the v3 tweaks
+4f3dba5 Move "What I build." into the services left column
+8502b10 Render the animated schwa in red from one token
+a4d1044 Regenerate the social card for the current headline
+```
+
+---
+
+## 1. What changed, item by item
+
+**1.1 Hero blurb.** New text, and the same text now in `<meta name="description">` and
+`og:description`, which had carried the old blurb:
+
+> Freelance and contract software development: integrations, internal tools, automation, and AI/LLM
+> integration.
+
+The four things named are unchanged. The list was reordered so the two words sharing the
+"integration" root are first and last rather than adjacent: the required clause stays at the end of
+the sentence, and the awkward "integrations, and AI/LLM integration" pairing is gone. This is the
+judgement call the spec allowed.
+
+**1.2 About statement.** Replaced with the descriptive line from the spec, verbatim:
+
+> Building software solutions businesses need but do not have: internal tools, reports no one can
+> pull, and integrations between systems.
+
+**1.3 Context paragraphs.** Both rewritten without first-person pronouns. The contract and
+forward-deployed sentence is gone: it was the last first-person clause in the block and it is not on
+the spec's list of facts to keep, and removing it also keeps the employer out of About.
+
+> Most of that work is unglamorous and internal. It is usually the reason someone is staying late,
+> and almost nobody wants to own it.
+>
+> The scope stays small on purpose. One workflow, one source, measured before it is called done,
+> with a person in the loop when a decision is uncertain. That is how delivery stays predictable.
+
+**1.4 CIRA card.** Final copy, in full:
+
+> CIRA is a purpose-built application for a client that needed requests arriving through forms,
+> email, and support channels checked, classified, assigned, recorded, and followed up. It handles
+> that intake in one place, keeps a record of each request, and stops anything uncertain for a
+> person to review before anything else changes.
+>
+> What is shown here is a permissioned reconstruction; the case study has the details.
+
+The problem comes from the case study's own problem statement. No adapter names, no correlation
+IDs, no provider talk, no outcome, saving, time or volume claim. The second paragraph is the single
+provenance pointer the spec asks for; the disclosure stays where it was, verbatim and once, on
+`/work/cira/`. The tag pills and the "Read the case study" link are unchanged.
+
+Two judgement calls. The retrieval sentence ("It also answers questions from a versioned document
+corpus…") was dropped: the spec's shape has three parts and a two-paragraph cap, and retrieval is
+still named in the tag pills and described in full on the case study page. And the workbench image
+that sits above the copy is a screenshot of the running CIRA app, so its own UI text, including a
+correlation ID field, is still visible in the picture. That is the product, not card prose, and the
+spec did not ask for a new image.
+
+**1.5 Scope statement.** `Systems like this fail on scope, not on models.` is now
+`Systems fail on scope, not on models.`
+
+**1.6 "Why this stays small".** Rewritten as the general delivery method, one paragraph, same claim
+level:
+
+> Small scope is deliberate. The decisions that matter in any build sit at its edges: what counts
+> as done, where a person has to approve, and what must never be automated. Agreeing those edges
+> early is most of the work, and a first version runs before the build grows.
+
+The CIRA-shaped examples are gone, and so is "in two weeks", which was a delivery-time claim the
+brief did not ask to keep.
+
+**1.7 FAQ, "Will it work with the tools we already use?"** Now opens `That is often the goal.` The
+rest of the answer is untouched.
+
+**1.8 "Eating your week", retired.** Four instances, four different rewrites:
+
+| Where | Now reads |
+| --- | --- |
+| home, service 01 | `The admin work, the reporting, and the data entry that nobody has time for.` |
+| home, FAQ "How do we start?" | `Email me with the job you keep putting off.` |
+| home, closing band | `If something takes more of your week than it should, tell me which one.` |
+| `/work/cira/`, closing band | `If this kind of process still runs by hand, tell me which one.` |
+
+`CONTENT.md` carries all four, and the phase is gone from `site/` and from `CONTENT.md` (check 5).
+The CIRA band differs from the home band on purpose, so neither page reads as a stock swap.
+
+**2.1 Scope section spacing.** Done by lowering the block beneath the statement, not by raising the
+statement, because the statement's own top step (48px below the label row) is the reference the eye
+already has:
+
+```css
+.statement--lead + .row { margin-top: clamp(28px, 3.4vw, 48px); }
+```
+
+Measured at 1440, statement bottom to the row's top hairline:
+
+```
+before: {"statementBottom":3211.36,"rowTop":3211.36,"gap":0}      (full run output in check 8)
+after:  {"statementBottom":3160.17,"rowTop":3208.17,"gapPx":48}
+```
+
+0px to 48px. The single left-bias alignment rule is unchanged: the statement still starts at the
+`--col-lead` offset and the body still starts where it starts.
+
+**2.2 "What I build." moved.** It is now the first child of the services grid, in the left column,
+and it is centred against the card block with `align-self: center`. The cards moved into a
+`.svc__cards` two-by-two block with the DOM in 01, 02, 03, 04 order, so the numbering reads
+correctly across the block and down the page. Above 1040px the cards are two-up; between 781px and
+1039px they are one-up beside the statement; below 781px everything stacks with the statement
+first. The old `.svc__col` wrapper and the `+ .card` margin rules are gone.
+
+**2.3 Duplicate call to action removed.** The `Email me for a price sheet` link at the end of
+section 05 is deleted. The section 04 link and the FAQ cost answer keep theirs.
+
+**3. The schwa in red.** One token, set once:
+
+```css
+--wm-swap: #ff4a35;                     /* :root */
+.swap__b { color: var(--wm-swap); }     /* the animated glyph slot */
+```
+
+`#ff4a35` is a warm signal red. It measures 6.28:1 against `#000`, so it reads clearly on the black
+page, and it separates from the white wordmark it sits inside without competing with it at footer
+size. It is also distinct from the ambient layer's warm radial (`rgba(255,148,100,.42)` at 10%
+opacity), so the glyph does not look like part of the background glow. Nothing else about the swap
+changed: same `schwa-in` / `schwa-out` keyframes, same 2.9s duration, same 8-20s irregular
+rescheduling, same fixed inline-grid slot, same `aria-hidden` glyph and hidden `covalent` name, same
+`prefers-reduced-motion` and print rules. `script.js` was not touched.
+
+**4. `og.png`.** Re-cut at 1200x630, 54,754 bytes. It keeps the black card, the mono top line and
+the cropped footer wordmark, drops the retired headline and support line, and shows the current
+headline with the current hero blurb as its supporting line. The generator is committed at
+`tools/og-card.html`, with the render command in a comment.
+
+One thing worth recording: the first two headless renders of the card differed from each other by
+110,504 pixels. The cause was the screenshot being taken before the Google Fonts files applied, so
+one render was in a fallback face. Adding `--virtual-time-budget=4000` fixed it: three consecutive
+renders came out byte-identical, and pixel-identical to a Playwright render that waited on
+`document.fonts.ready` (wordmark measured at 1072px, exactly the content column). The committed
+`og.png` is that deterministic render. `og:image:alt` is unchanged on all three pages and still
+describes the card: `Covalent AI: prototype to production, without the agency`.
+
+---
+
+## 2. Checks from §7, numbered to match
+
+Every command and every output below is real and unedited. The browser checks ran against
+`python3 -m http.server 8123 -d site` on the working tree at `a4d1044`.
+
+### 1. Hero blurb
+
+```
+$ node evidence.cjs   (headless Chromium, 1440x900, reloaded at that viewport)
+=== [1] hero blurb ===
+text: Freelance and contract software development: integrations, internal tools, automation, and AI/LLM integration.
+ends with "AI/LLM integration.": true
+meta description: Freelance and contract software development: integrations, internal tools, automation, and AI/LLM integration.
+og:description:  Freelance and contract software development: integrations, internal tools, automation, and AI/LLM integration.
+```
+
+### 2. About statement and Context, no first-person pronoun
+
+```
+=== [2] About statement + Context, first-person grep ===
+statement: Building software solutions businesses need but do not have: internal tools, reports no one can pull, and integrations between systems.
+context:
+Most of that work is unglamorous and internal. It is usually the reason someone is staying late, and almost nobody wants to own it.
+
+The scope stays small on purpose. One workflow, one source, measured before it is called done, with a person in the loop when a decision is uncertain. That is how delivery stays predictable.
+grep -E "\bI\b|\bmy\b|\bme\b" on statement+context: null -> no match
+```
+
+The grep runs over the statement element and the whole `[ Context ]` row body, taken from the live
+DOM, so it covers exactly the two blocks the check names.
+
+### 3. CIRA card copy, in full
+
+```
+=== [3] CIRA card copy ===
+title: CIRA: client intake with review and an audit trail
+tags:  INTAKE · TRIAGE · REVIEW GATE · RETRIEVAL WITH CITATIONS · AUDIT TRAIL
+body:
+CIRA is a purpose-built application for a client that needed requests arriving through forms, email, and support channels checked, classified, assigned, recorded, and followed up. It handles that intake in one place, keeps a record of each request, and stops anything uncertain for a person to review before anything else changes.
+      What is shown here is a permissioned reconstruction; the case study has the details.
+link:  Read the case study ↗
+```
+
+### 4. Scope statement
+
+```
+$ grep -rn "Systems like this fail" site/
+(no match)
+
+$ grep -rn "Systems fail on scope" site/ CONTENT.md
+site/index.html:124:    <p class="statement statement--lead" data-reveal="lg">Systems fail on scope, not on models.</p>
+CONTENT.md:157:Statement: `Systems fail on scope, not on models.`
+```
+
+### 5. Retired phrase gone
+
+```
+$ grep -rniE "eats? (someone's|the most|your) (week|time)|eating your week" site/ CONTENT.md
+(no match)
+```
+
+### 6. Price-sheet links
+
+```
+$ grep -c "Email me for a price sheet" site/index.html
+2
+
+$ grep -n "Email me for a price sheet" site/index.html
+171:    <a class="link" href="mailto:samuel.takata@covalent-ai.dev?subject=Price%20sheet">Email me for a price sheet <span class="arw" aria-hidden="true">&#8599;</span></a>
+311:          <a class="link" href="mailto:samuel.takata@covalent-ai.dev?subject=Price%20sheet">Email me for a price sheet <span class="arw" aria-hidden="true">&#8599;</span></a>
+```
+
+Line 171 is the end of section 04, line 311 is the FAQ cost answer. The section 05 instance is
+gone.
+
+### 7. FAQ softened wording
+
+```
+$ grep -n "That is often the goal" site/index.html CONTENT.md
+site/index.html:316:        <p class="qrow__a">That is often the goal. I connect to the systems you already run, and the first build goes against a sandbox boundary, so nothing in your live systems changes until you have seen it work.</p>
+CONTENT.md:274:   > That is often the goal. I connect to the systems you already run, and the first build goes
+```
+
+### 8. Scope spacing, before and after
+
+```
+before (at 5da477c, same viewport and reload):
+{"statementTop":3094.89,"statementBottom":3211.36,"rowTop":3211.36,"gap":0}
+
+after:
+=== [8] scope spacing at 1440 ===
+{"statementBottom":3160.17,"rowTop":3208.17,"gapPx":48}
+```
+
+The absolute page offsets moved because the copy above the section got shorter; the gap between the
+statement's bottom edge and the row's top hairline is the measured figure, and it went from 0px to
+48px.
+
+### 9. "What I build." and the card block, at 1440
+
+```
+before:
+"statement": {"x":896,"y":3613.4,"w":520,"h":38.9,"cy":3632.9}
+"cardsBlock": {"top":3613.4,"bottom":4082.1,"cy":3847.8}
+
+after:
+=== [9] "What I build." vs four cards at 1440 ===
+{
+ "statement": {
+  "x": 24,
+  "y": 3781.7,
+  "w": 300,
+  "h": 38.9,
+  "centreY": 3801.2
+ },
+ "cards": [
+  { "n": "[ 01 ]", "x": 367.2, "y": 3610.3, "w": 507.1, "h": 166.9 },
+  { "n": "[ 02 ]", "x": 908.9, "y": 3610.3, "w": 507.1, "h": 166.9 },
+  { "n": "[ 03 ]", "x": 367.2, "y": 3825.2, "w": 507.1, "h": 166.9 },
+  { "n": "[ 04 ]", "x": 908.9, "y": 3825.2, "w": 507.1, "h": 166.9 }
+ ],
+ "cardsBlock": {
+  "left": 367.2,
+  "right": 1416,
+  "top": 3610.3,
+  "bottom": 3992.1,
+  "centreY": 3801.2
+ }
+}
+```
+
+(The card objects are shown on one line each here; the run prints them expanded.) The statement now
+starts at x=24, the content left edge in the left column, and its centre is 3801.2 against the card
+block's centre of 3801.2: an exact vertical centring. The block spans x=367.2 to 1416, so the
+statement sits clear of it in the left column, and the cards read 01, 02 / 03, 04.
+
+### 10. Schwa: token, both glyph widths, colour, accessible name, reduced motion
+
+```
+=== [10] schwa: token, colour, widths, a11y, reduced motion ===
+-- home (/)
+   token: #ff4a35
+   {"where":"header wordmark","slot":10.125,"plainE":10.125,"schwa":10.125,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+   {"where":"eyebrow","slot":8.641,"plainE":8.641,"schwa":8.641,"eColor":"rgba(255, 255, 255, 0.5)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"Covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+   {"where":"footer wordmark","slot":200.547,"plainE":200.547,"schwa":200.547,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+-- cira (/work/cira/)
+   token: #ff4a35
+   {"where":"header wordmark","slot":10.125,"plainE":10.125,"schwa":10.125,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+   {"where":"footer wordmark","slot":200.547,"plainE":200.547,"schwa":200.547,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+-- 404 (/404.html)
+   token: #ff4a35
+   {"where":"header wordmark","slot":10.125,"plainE":10.125,"schwa":10.125,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+   {"where":"footer wordmark","slot":200.547,"plainE":200.547,"schwa":200.547,"eColor":"rgb(255, 255, 255)","schwaColor":"rgb(255, 74, 53)","glyphAriaHidden":"true","accessibleWord":"covalent","animationName":"schwa-in","animationDuration":"2.9s"}
+
+accessibility, per page:
+home | a11y "covalent" links: 2 | name with aria-hidden nodes removed: ["covalent","covalent","eyebrow: Covalent AI"]
+cira | a11y "covalent" links: 2 | name with aria-hidden nodes removed: ["covalent","covalent"]
+404  | a11y "covalent" links: 2 | name with aria-hidden nodes removed: ["covalent","covalent"]
+
+-- prefers-reduced-motion: reduce (home)
+   [{"where":"header","animationName":"none","plainOpacity":"1","schwaOpacity":"0"},{"where":"eyebrow","animationName":"none","plainOpacity":"1","schwaOpacity":"0"},{"where":"footer","animationName":"none","plainOpacity":"1","schwaOpacity":"0"}]
+   loaded --sw-delay values: ["(unset)","(unset)","(unset)"]
+
+-- 8-20s scheduling (60 reschedules per slot, forced animationiteration)
+   {"min":8.02,"max":19.939,"n":180}
+```
+
+Reading it: the plain "e" and the schwa measure identically in every instance (10.125px header,
+8.641px eyebrow, 200.547px footer at 1440), so the swap cannot reflow the line. The colour token is
+present and applied in all seven wordmark instances across the three pages (three on home, two each
+on the CIRA page and the 404 page). Under reduced motion the animation name is `none` and the slot
+is left showing the plain "e"; the script also does not schedule a delay at all, which is why the
+`--sw-delay` values are unset in that context. Forced `animationiteration` events over 180
+reschedules stayed inside the 8-20s window.
+
+### 11. og.png
+
+```
+$ python3 -c "import struct; d=open('site/assets/og.png','rb').read(); print(struct.unpack('>II', d[16:24]), len(d), 'bytes')"
+(1200, 630) 54754 bytes
+
+$ shasum -a 256 site/assets/og.png /tmp/dsh3/og-v3.png
+d44d24a39ceeda0698dd8ff54896f43960fd0b79d9ce9f4ac068042758a3b294  site/assets/og.png
+d44d24a39ceeda0698dd8ff54896f43960fd0b79d9ce9f4ac068042758a3b294  /tmp/dsh3/og-v3.png
+
+$ python3 pngdiff.py /tmp/dsh3/og-pw.png /tmp/dsh3/og-v3.png
+shapes (630, 1200, 3) (630, 1200, 3)
+differing pixels: 0 of 756000
+max channel delta: 0
+
+$ grep -rn "og:image" site/*.html site/work/cira/index.html
+site/404.html:13:<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+site/404.html:14:<meta property="og:image:width" content="1200">
+site/404.html:15:<meta property="og:image:height" content="630">
+site/404.html:16:<meta property="og:image:alt" content="Covalent AI: prototype to production, without the agency">
+site/index.html:12:<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+site/index.html:13:<meta property="og:image:width" content="1200">
+site/index.html:14:<meta property="og:image:height" content="630">
+site/index.html:15:<meta property="og:image:alt" content="Covalent AI: prototype to production, without the agency">
+site/work/cira/index.html:12:<meta property="og:image" content="https://covalent-ai.dev/assets/og.png">
+site/work/cira/index.html:13:<meta property="og:image:width" content="1200">
+site/work/cira/index.html:14:<meta property="og:image:height" content="630">
+site/work/cira/index.html:15:<meta property="og:image:alt" content="Covalent AI: prototype to production, without the agency">
+```
+
+`og-v3.png` is the last of the three `--virtual-time-budget` renders; `og-pw.png` is the Playwright
+render that waited on `document.fonts.ready`. The committed file is byte-identical to the first and
+pixel-identical to the second.
+
+The headline on the card is `Prototype to production, without the agency.` and the alt text names
+exactly that. The file is `site/assets/og.png` in this repository, viewed in this run.
+
+### 12. Pages, links, horizontal scroll
+
+```
+=== [12] status codes, internal links, horizontal scroll ===
+home / -> HTTP 200
+   #main -> in-page anchor
+   / -> HTTP 200
+   /work/cira/ -> HTTP 200
+cira /work/cira/ -> HTTP 200
+   #main -> in-page anchor
+   / -> HTTP 200
+   /work/cira/ -> HTTP 200
+404 /404.html -> HTTP 200
+   #main -> in-page anchor
+   / -> HTTP 200
+   /work/cira/ -> HTTP 200
+home: [{"vw":375,"scrollWidth":375,"innerWidth":375,"overflow":false},{"vw":768,"scrollWidth":768,"innerWidth":768,"overflow":false},{"vw":1440,"scrollWidth":1440,"innerWidth":1440,"overflow":false}]
+cira: [{"vw":375,"scrollWidth":375,"innerWidth":375,"overflow":false},{"vw":768,"scrollWidth":768,"innerWidth":768,"overflow":false},{"vw":1440,"scrollWidth":1440,"innerWidth":1440,"overflow":false}]
+404: [{"vw":375,"scrollWidth":375,"innerWidth":375,"overflow":false},{"vw":768,"scrollWidth":768,"innerWidth":768,"overflow":false},{"vw":1440,"scrollWidth":1440,"innerWidth":1440,"overflow":false}]
+```
+
+There are three HTML pages, not four; every internal link on all three resolves, and the mailto and
+external links are the only ones not fetched. Each viewport was set and the page reloaded before
+`scrollWidth` was read.
+
+### 13. CIRA title, one line at 1440
+
+```
+=== [13] CIRA title at 1440 ===
+{"fontSize":"47.52px","boxWidth":974.4,"boxHeight":48.5,"textWidth":940.8,"lines":1}
+```
+
+One line: `Range.getClientRects()` returns a single rect, 940.8px of text in a 974.4px box (24% at
+3.3vw kept). The `clamp(30px, 3.3vw, 48px)` rule is untouched.
+
+### 14. Disclosure, verbatim and once
+
+```
+$ grep -rn "CIRA is a representative reconstruction of prior paid freelance work" site/
+site/work/cira/index.html:58:      <p>CIRA is a representative reconstruction of prior paid freelance work for a Minnesota company, presented with permission. The company's identity, original repositories, and confidential system details are withheld. This demonstration is the reconstruction, not the original client deployment. The knowledge corpus and demo inputs are synthetic.</p>
+
+$ grep -rc "CIRA is a representative reconstruction of prior paid freelance work" site/work/cira/index.html
+1
+
+$ grep -rn "permissioned reconstruction" site/ CONTENT.md
+site/index.html:110:          <p>What is shown here is a permissioned reconstruction; the case study has the details.</p>
+CONTENT.md:38:  it then carries one short clause saying what is shown is a permissioned reconstruction with the
+CONTENT.md:142:> What is shown here is a permissioned reconstruction; the case study has the details.
+```
+
+One full disclosure, on `/work/cira/` only. The home card's pointer clause is a different sentence,
+names no client, and repeats none of the disclosure's content.
+
+### 15. Dashes, banned words, prices, address, OpenAI
+
+```
+$ grep -rn "—\|–" site/ --include='*.html' --include='*.css' --include='*.js'
+site/index.html:221:          <p class="mono xp__when">Jan 2025 — present</p>
+site/index.html:236:          <p class="mono xp__when">Jul 2024 — Dec 2024</p>
+site/index.html:245:          <p class="mono xp__when">Jun 2023 — Jul 2024</p>
+site/script.js:1:/* covalent — variant B, "Editorial"
+site/work/cira/index.html:93:          <p class="slot__line">A 3–5 minute walkthrough will be posted here: one request that completes, and one that stops at the review gate.</p>
+site/style.css:2:   covalent — variant B, "Editorial"
+```
+
+Six, none inside a prose sentence: three date ranges in the mono `.xp__when` label, one numeric
+span (`3–5 minute`) in a frame label, and two source comments that never render. All six predate
+this run and are unchanged except for the line numbers above them; no new dash was introduced.
+
+```
+$ grep -rniE "enhance|showcase|robust|pivotal|landscape|testament|intricate|seamless|leverage|unlock|empower|supercharge|revolutioni|cutting-edge|world-class|game-chang" site/
+(no match)
+
+$ grep -rnoE '\$[0-9]' site/ --include='*.html' --include='*.css' --include='*.js' --include='*.md' --include='*.svg'
+(no match in text files)
+
+$ ls -d site/pricing
+(no pricing directory)
+
+$ grep -rn "gifttakata" site/ CONTENT.md
+(no match)
+
+$ python3  (parse site/index.html, report the enclosing section of every "openai" match)
+line 220: section = Experience
+line 235: section = Experience
+line 278: section = Experience
+```
+
+The whole-directory `grep -rloE '\$[0-9]' site/` does match files, because `site/_screens/*.png`,
+`site/assets/og.png` and `site/assets/workbench.jpg` are binaries and a dollar byte followed by a
+digit byte occurs inside compressed image data. The text-file grep above is the one that matters,
+and it is empty. No price appears on any page, and the price sheet still goes out by email only.
+
+### 16. Screenshots, and what looking at them changed
+
+Fresh at 375 and 1440, full page and above the fold, for `/`, `/work/cira/` and `/404.html`, plus
+three frames with the wordmark held in its swapped state to show the red glyph:
+
+```
+$ python3 -c "
+import struct, glob
+for f in sorted(glob.glob('site/_screens/*.png')):
+    d=open(f,'rb').read(); w,h=struct.unpack('>II', d[16:24]); print(f'{f:44s} {w}x{h} {len(d)} bytes')"
+site/_screens/404-1440-fold.png              1440x900 57798 bytes
+site/_screens/404-1440.png                   1440x1001 70195 bytes
+site/_screens/404-375-fold.png               375x900 38847 bytes
+site/_screens/404-375.png                    375x900 38847 bytes
+site/_screens/cira-1440-fold.png             1440x900 72322 bytes
+site/_screens/cira-1440.png                  1440x7179 855584 bytes
+site/_screens/cira-375-fold.png              375x900 52795 bytes
+site/_screens/cira-375.png                   375x7796 503574 bytes
+site/_screens/home-1440-fold.png             1440x900 113845 bytes
+site/_screens/home-1440.png                  1440x8446 1122559 bytes
+site/_screens/home-375-fold.png              375x900 54347 bytes
+site/_screens/home-375.png                   375x9580 572963 bytes
+site/_screens/wordmark-midswap-eyebrow-1440.png 1392x31 1566 bytes
+site/_screens/wordmark-midswap-footer-1440.png 1440x900 72322 bytes
+site/_screens/wordmark-midswap-header-1440.png 1440x63 3993 bytes
+site/_screens/wordmark-red-eyebrow-1440.png  1392x31 1594 bytes
+site/_screens/wordmark-red-footer-1440.png   1440x900 79806 bytes
+site/_screens/wordmark-red-header-1440.png   1440x63 4074 bytes
+```
+
+The `wordmark-red-*` frames are this run's. The three older `wordmark-midswap-*` files are last
+run's equivalent frames, left in place so the previous report's references still resolve.
+
+The frames are held mid-swap the same way as last run: the two glyphs are pinned with
+`animation-play-state: paused`, because a 0.9s swap inside a 2.9s animation that repeats every 8 to
+20 seconds cannot be caught with a timed screenshot.
+
+What looking at them changed: nothing needed a fix this time. The points I checked, and what they
+showed:
+
+- The services block at 1440 reads as a labelled left column against a two-by-two card grid, with
+  the statement's baseline sitting in the middle of the block rather than aligned to the first row.
+- Below 781px the statement stacks above the cards, keeps its hairline, and the cards run 01 to 04
+  down the page.
+- The scope statement now has visible air above the `[ Why this stays small ]` row, and that row
+  still starts at the same left edge as the body it labels.
+- The hero blurb holds one line at 1440 and three lines at 375, with no orphan.
+- The red schwa is unmistakable in the header (19px), the eyebrow (12px) and the footer wordmark,
+  and it does not read as a typo at any of the three sizes.
+- The FAQ shows one price-sheet link, in the cost answer, and the "How it works" section ends on
+  step 04 with nothing after it.
+- The CIRA page title is one line at 1440 and wraps normally at 375, with the disclosure panel
+  directly under the blurb.
+
+---
+
+## 3. Deviations, and what was not done
+
+- **`site/404.html` was not touched**, as the spec allows for. It has no retired phrase, no price
+  link, and no first-person copy; its wordmark instances pick up the red schwa from the shared
+  stylesheet, which is why it still needed checking.
+- **`site/script.js` was not touched.** The colour is CSS only, as the spec preferred.
+- **`tools/og-card.html` is a new file**, which is outside the spec's file table. The spec
+  explicitly allows committing the generator if one is written, and this is it, with the render
+  command in a comment.
+- **`CONTENT.md` grew in two places where the old rules had become wrong**: the About blocks are now
+  documented as the deliberate exception to the first-person rule, and the home-card rule now allows
+  the single provenance pointer while still forbidding a second disclosure. Both are notes about the
+  shipped copy, not new copy.
+- **Not done, and not in this run's scope:** the walkthrough video and the flow diagram are still
+  designed placeholder frames; the two contract roles still have one-line descriptions; the
+  workbench image still shows the app's own internal labels because it is a real screenshot of the
+  running demo. Nothing on the site claims a recording exists.
+- **No prices, no testimonials, no client names, no metrics** were added anywhere. The OpenAI
+  credential still appears in the Experience section only.
+- **No deploy, no push, no new dependency, no build step, no signups.** The only network calls made
+  during the run were Google Fonts requests from the headless renderer for the social card, which
+  are the same requests the site itself makes in a browser.
+
+---
+
+## 4. Added instruction outside the site: the emailed price-sheet template
+
+Partway through this run the owner asked for one more change, outside this repository: update the
+customer-facing price-sheet email template to include an hourly-rate option where appropriate, using
+`first-track-b-pricing-and-payment-strategy.md` as the pricing authority and
+`ai-consulting-pricing-research-sources.md` as supporting research. That named file is inside
+`/Users/taxman/Andromeda-v2`, which the site spec otherwise puts off limits, so it was the only file
+written there and nothing else in that tree was touched.
+
+What changed, in
+`/Users/taxman/Andromeda-v2/Tech Progression v4/program/commercial/packets/price-sheet.md`:
+
+- The diagnostic, pilot and larger-work structure is intact, and the fixed bands, the `$2,500` floor
+  and the 50/50 payment split are unchanged.
+- One new paragraph is added for capped hourly work, covering the three cases the strategy allows
+  (a short discovery with real unknowns, troubleshooting in a system built by someone else, and a
+  change whose size depends on what is found). It states that the work runs against a written cap
+  the buyer approves before it starts, that only time actually worked is billed, and that it never
+  applies to the diagnostic or the pilot.
+- The opening line said "Every engagement is fixed-price". That was no longer true once hourly work
+  exists, so it now says every engagement is scoped and priced in writing and that most of it is
+  fixed-price.
+- **The hourly rate is marked proposed, not approved.** The strategy sets `$100/hour` and
+  `$125/hour` as internal shadow rates and says to use them "not to create a permanent rate card",
+  and its own header says it "does not approve an external price". No document in the hierarchy
+  approves an exact customer-facing hourly rate, so the rate line reads
+  `$125 per hour. [PROPOSED RATE: Taxman confirms this number or replaces it before sending.]` and
+  the file has a "Rate decision required" section.
+- That section puts the specific decision to Taxman: whether the sheet quotes a public hourly rate
+  at all, and at which number. Four options are laid out with their consequences: `$125/hour` (the
+  recommendation, the strategy's own upper shadow figure, above the `$100/hour` planning rate so an
+  hourly quote cannot undercut a fixed quote built on it), a two-tier `$125`/`$150`, a single
+  `$150/hour` (internally consistent with the `$750–$1,500/month` support band against its 5-10 hour
+  cap), or no published rate with the rate quoted alongside each cap. Two smaller settings inside
+  the same decision, eligibility and cap discipline, are recorded as already answered by the
+  strategy.
+- The front matter now points at the canonical strategy as the pricing authority and records the
+  hourly option as proposed. The file states plainly that it is customer-facing wording only and not
+  a second source of truth.
+
+The template was not committed anywhere: that tree is not this repository and the instruction was to
+update the file, so the change sits in the working tree for Taxman to review or revert.
